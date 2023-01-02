@@ -4,7 +4,7 @@
   "description": "Selendra Evm block explorer",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/libs/balance.ts"
+    "start": "ts-node src/libs/block.ts"
   },
   "repository": {
     "type": "git",

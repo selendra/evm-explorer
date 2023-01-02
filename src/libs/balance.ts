@@ -1,6 +1,5 @@
 import { provider } from "../utils"
 
-
 const balances = async (addressFrom: string) => {
   const balanceFrom = provider.utils.fromWei(await provider.eth.getBalance(addressFrom));
   
