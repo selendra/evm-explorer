@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
+    "target": "ES2018",
     "lib": ["es6"],
     "module": "commonjs",
     "rootDir": "src",
@@ -11,6 +11,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+  },
+  "include": ["src", "index.d.ts"],
+  "exclude": ["node_modules", "built"]
 }

@@ -1,7 +1,7 @@
-import { provider } from "../utils"
+import { evmProvider } from "../utils"
 
 const balances = async (addressFrom: string) => {
-  const balanceFrom = provider.utils.fromWei(await provider.eth.getBalance(addressFrom));
+  const balanceFrom = evmProvider.utils.fromWei(await evmProvider.eth.getBalance(addressFrom));
   
   console.log(`The balance of ${addressFrom} is: ${balanceFrom} SEL`);
 };
