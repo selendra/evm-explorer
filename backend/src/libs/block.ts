@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/node';
+import { ApiPromise } from '@polkadot/api';
 import { Client } from 'pg';
 import Web3 from 'web3';
 import { BlockNumber} from "web3-core";
@@ -104,5 +105,66 @@ export const healthCheck = async (
       config.statsPrecision,
     )}s`,
   );
+};
+
+// store chain metadata - Substrate
+export const storeMetadata = async (
+  api: ApiPromise,
+  client: Client,
+  blockNumber: number,
+  blockHash: string,
+  specName: string,
+  specVersion: number,
+  timestamp: number,
+  loggerOptions: LoggerOptions,
+): Promise<void> => {
+  let metadata;
+  try {
+    const response = await api.rpc.state.getMetadata(blockHash);
+    metadata = response;
+    logger.debug(loggerOptions, `Got runtime metadata at ${blockHash}!`);
+  } catch (error) {
+    logger.error(
+      loggerOptions,
+      `Error fetching runtime metadata at ${blockHash}: ${JSON.stringify(
+        error,
+      )}`,
+    );
+    const scope = new Sentry.Scope();
+    scope.setTag('blockNumber', blockNumber);
+    Sentry.captureException(error, scope);
+  }
+  const data = [
+    blockNumber,
+    specName,
+    specVersion,
+    Object.keys(metadata)[0],
+    metadata.magicNumber,
+    metadata,
+    timestamp,
+  ];
+  const query = `
+    INSERT INTO runtime (
+      block_number,
+      spec_name,
+      spec_version,
+      metadata_version,
+      metadata_magic_number,
+      metadata,
+      timestamp
+    ) VALUES (
+      $1,
+      $2,
+      $3,
+      $4,
+      $5,
+      $6,
+      $7
+    )
+    ON CONFLICT (spec_version)
+    DO UPDATE SET
+      block_number = EXCLUDED.block_number
+    WHERE EXCLUDED.block_number < runtime.block_number;`;
+  await dbParamQuery(client, query, data, loggerOptions);
 };
 
