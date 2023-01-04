@@ -11,4 +11,4 @@ const blockNumber = async (block_number: number) => {
     console.log(block);
   };
     
-blockNumber(1);
+blockNumber(230711);

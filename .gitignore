@@ -105,3 +105,9 @@ dist
 
 # Build outDir
 build
+
+# env file
+.env
+
+# database
+database

@@ -3,7 +3,7 @@
     "target": "ES2018",
     "lib": ["es6"],
     "module": "commonjs",
-    "rootDir": "src",
+    "rootDir": "backend/src",
     "resolveJsonModule": true,
     "allowJs": true,
     "outDir": "build",
@@ -13,6 +13,6 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
   },
-  "include": ["src", "index.d.ts"],
+  "include": ["backend/src", "index.d.ts"],
   "exclude": ["node_modules", "built"]
 }

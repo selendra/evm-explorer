@@ -1,35 +1,26 @@
 {
-  "name": "evm-explorer",
-  "version": "1.0.0",
-  "description": "Selendra Evm block explorer",
-  "main": "index.js",
-  "scripts": {
-    "start": "ts-node src/libs/transaction.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/selendra/evm-explorer.git"
-  },
-  "keywords": [],
-  "author": "Selendra <info@selendra.org>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/selendra/evm-explorer/issues"
-  },
-  "homepage": "https://github.com/selendra/evm-explorer#readme",
-  "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@types/pg": "^8.6.6",
-    "typescript": "^4.9.4"
-  },
-  "dependencies": {
-    "@polkadot/api": "^9.10.5",
-    "@sentry/node": "^7.28.1",
-    "dotenv": "^16.0.3",
-    "pg": "^8.8.0",
-    "pg-format": "^1.0.4",
-    "pino": "^8.8.0",
-    "web3": "^1.8.1",
-    "web3-core": "^1.8.1"
+    "private": true,
+    "name": "selendra-scan",
+    "description": "selendra block explorer",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/selendra/selendra-scan.git"
+    },
+    "keywords": [
+      "blockchain",
+      "substrate",
+      "selendra-scan",
+      "validator"
+    ],
+    "author": "Selendra <info@selendra.org>",
+    "license": "Apache-2.0",
+    "bugs": {
+      "url": "https://github.com/selendra/selendra-scan/issues"
+    },
+    "homepage": "https://github.com/selendra/selendra-scan#readme",
+    "workspaces": [
+      "backend"
+    ],
+    "scripts": {},
+    "dependencies": {}
   }
-}
