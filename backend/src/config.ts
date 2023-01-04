@@ -1,6 +1,8 @@
 require('dotenv').config();
 
 export const backendConfig = {
+  logLevel: process.env.LOG_LEVEL || 'info',
+  sentryDSN: process.env.SENTRY_DSN || '',
   postgresConnParams: {
     user: process.env.POSTGRES_USER || 'selendrascan',
     host: process.env.POSTGRES_HOST || '5432',
@@ -17,10 +19,24 @@ export const backendConfig = {
     },
     substrate: {
       name: 'selendra',
-      rpc: 'wss://rpc1.selendra.org',
+      rpc: 'ws://localhost:9944',
       symbol: 'SEL'
     }
   },
-  logLevel: process.env.LOG_LEVEL || 'info',
-  sentryDSN: process.env.SENTRY_DSN || '',
+  scans: [
+    {
+      name: 'blockHarvester',
+      enabled: !process.env.BLOCK_HARVESTER_DISABLE,
+      crawler: './built/crawlers/blockHarvester.js',
+      apiCustomTypes: process.env.API_CUSTOM_TYPES || '',
+      startDelay:
+        parseInt(process.env.BLOCK_HARVESTER_START_DELAY_MS, 10) || 10 * 1000,
+      mode: process.env.BLOCK_HARVESTER_MODE || 'chunks',
+      chunkSize: parseInt(process.env.BLOCK_HARVESTER_CHUNK_SIZE, 10) || 10,
+      statsPrecision: parseInt(process.env.BACKEND_STATS_PRECISION, 10) || 2,
+      pollingTime:
+        parseInt(process.env.BLOCK_LISTENER_POLLING_TIME_MS, 10) ||
+        60 * 60 * 1000,
+    }
+  ],
 };  
