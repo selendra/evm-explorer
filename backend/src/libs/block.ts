@@ -3,6 +3,7 @@ import { ApiPromise } from '@polkadot/api';
 import { Client } from 'pg';
 import Web3 from 'web3';
 import { BlockNumber} from "web3-core";
+import { processEvmAccountInfo } from './account';
 import { backendConfig } from "../config";
 import { logger,LoggerOptions, dbParamQuery, ScanerConfig, dbQuery, getDisplayName, shortHash } from '../utils';
 
@@ -168,6 +169,7 @@ export const storeMetadata = async (
   await dbParamQuery(client, query, data, loggerOptions);
 };
 
+// harvest block from blocknumber - Substrate
 export const harvestBlock = async (
   config: ScanerConfig,
   api: ApiPromise,
@@ -334,6 +336,7 @@ export const harvestBlock = async (
   }
 };
 
+// harvest block from blocknumber - EVM
 export const harvestEvmBlock = async (
   config: ScanerConfig,
   api: Web3 | undefined,
@@ -399,7 +402,7 @@ export const harvestEvmBlock = async (
     ;`;
 
     try {
-      await dbParamQuery(client, sql, data, loggerOptions);
+      // await dbParamQuery(client, sql, data, loggerOptions);
       const endTime = new Date().getTime();
       logger.info(
         loggerOptions,
@@ -416,6 +419,34 @@ export const harvestEvmBlock = async (
       const scope = new Sentry.Scope();
       scope.setTag('blockNumber', blockNumber);
       Sentry.captureException(error, scope);
+    }
+    
+    if (block.transactions) {
+      for (let i = 0; i < block.transactions.length; i++) {
+          let txn = await api.eth.getTransaction(block.transactions[i]);
+
+          if(txn.from) {
+            processEvmAccountInfo(
+              api,
+              client,
+              txn.from,
+              block.timestamp,
+              block.number,
+              loggerOptions
+            )
+          };
+         
+          if(txn.to) {
+            processEvmAccountInfo(
+              api,
+              client,
+              txn.to,
+              block.timestamp,
+              block.number,
+              loggerOptions
+            )
+          }
+      }
     }
 
   } catch (error) {

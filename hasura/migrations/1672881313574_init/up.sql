@@ -50,3 +50,29 @@ CREATE TABLE IF NOT EXISTS runtime (
   timestamp BIGINT NOT NULL,
   PRIMARY KEY ( spec_version )
 );
+
+
+CREATE TABLE IF NOT EXISTS substrate_account  (  
+  account_id TEXT NOT NULL,
+  identity TEXT NOT NULL,
+  identity_display TEXT NOT NULL,
+  identity_display_parent TEXT NOT NULL,
+  balances TEXT NOT NULL,
+  available_balance NUMERIC(40,0) NOT NULL,
+  free_balance NUMERIC(40,0) NOT NULL,
+  locked_balance NUMERIC(40,0) NOT NULL,
+  reserved_balance NUMERIC(40,0) NOT NULL,
+  total_balance NUMERIC(40,0) NOT NULL,
+  nonce BIGINT NOT NULL,
+  timestamp BIGINT NOT NULL,
+  block_height BIGINT NOT NULL,
+  PRIMARY KEY ( account_id )  
+);
+
+CREATE TABLE IF NOT EXISTS evm_account  (  
+  account_id TEXT NOT NULL,
+  balances NUMERIC(40,0) NOT NULL,
+  timestamp BIGINT NOT NULL,
+  block_height BIGINT NOT NULL,
+  PRIMARY KEY ( account_id )  
+);

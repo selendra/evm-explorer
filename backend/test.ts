@@ -46,7 +46,7 @@ const testScan = async () => {
   // }
 
   // await harvestBlock(config, api, client, 0, false, loggerOptions)
-  await harvestEvmBlock(config, api, client, 5, loggerOptions);
+  await harvestEvmBlock(config, api, client, 237901, loggerOptions);
 
 }
 

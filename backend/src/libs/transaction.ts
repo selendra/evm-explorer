@@ -1,14 +1,19 @@
-import { evmProvider } from "../utils"
+import * as Sentry from '@sentry/node';
+import Web3 from 'web3';
+import { backendConfig } from "../config";
+import { logger, LoggerOptions } from '../utils';
 
-const scanTransaction = async (blocknumer: number) => {
-  const block = await evmProvider.eth.getBlock(blocknumer);
-  if (block.transactions) {
-    for (let i = 0; i < block.transactions.length; i++) {
-        let txn = block.transactions[i];
-        let data = await evmProvider.eth.getTransaction(txn);
-        console.log(data);
-    }
-  }
+Sentry.init({
+  dsn: backendConfig.sentryDSN,
+  tracesSampleRate: 1.0,
+});
+
+const getTransaction = async (
+  api: Web3,
+  transactionHash: string,
+  loggerOptions: LoggerOptions,
+) => {
+  let txn = await api.eth.getTransaction(transactionHash);
 }
 
 // scanAccount(225259);
