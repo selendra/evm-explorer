@@ -17,7 +17,13 @@ export const getClient = async (
     `Connecting to DB ${backendConfig.postgresConnParams.database} at ${backendConfig.postgresConnParams.host}:${backendConfig.postgresConnParams.port}`,
   );
   const client = new Client(backendConfig.postgresConnParams);
-  await client.connect();
+  try {
+    await client.connect();
+    logger.info(loggerOptions,`Connecting to DB success`,);
+  } catch (error) {
+    logger.error(loggerOptions, `SQL: Connecting to DB false`);
+    Sentry.captureException(error);
+  }
   return client;
 };
 

@@ -35,7 +35,7 @@ const config: any = backendConfig.scans.find(
 );
 
 const testScan = async () => {
-  // const client = await getClient(loggerOptions);
+  const client = await getClient(loggerOptions);
   // const api = await substrateProvider(loggerOptions, config.apiCustomTypes);
   const api = evmProvider(loggerOptions)
 
@@ -45,16 +45,9 @@ const testScan = async () => {
   //   synced = await isNodeSynced(api, loggerOptions);
   // }
 
-  // await harvestBlock(config, api, 1, false, loggerOptions)
-  await harvestEvmBlock(config, api, 1, loggerOptions);
+  // await harvestBlock(config, api, client, 0, false, loggerOptions)
+  await harvestEvmBlock(config, api, client, 5, loggerOptions);
 
-  // await api.disconnect().catch((error) => {
-  //   logger.error(
-  //     loggerOptions,
-  //     `API disconnect error: ${JSON.stringify(error)}`,
-  //   );
-  //   Sentry.captureException(error);
-  // });
 }
 
 testScan().catch((error) => {

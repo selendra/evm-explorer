@@ -171,7 +171,7 @@ export const storeMetadata = async (
 export const harvestBlock = async (
   config: ScanerConfig,
   api: ApiPromise,
-  // client: Client,
+  client: Client,
   blockNumber: number,
   doUpdateAccountsInfo: boolean,
   loggerOptions: LoggerOptions,
@@ -180,7 +180,6 @@ export const harvestBlock = async (
   try {
     const blockHash = await api.rpc.chain.getBlockHash(blockNumber);
     const apiAt = await api.at(blockHash);
-    console.log(apiAt);
     const [
       derivedBlock,
       totalIssuance,
@@ -197,7 +196,6 @@ export const harvestBlock = async (
       apiAt.query.session.currentIndex(),
     ]);
     const { block, author, events: blockEvents } = derivedBlock;
-    console.log(block);
     // genesis block doesn't have author
     const blockAuthor = author ? author.toString() : '';
     const { parentHash, extrinsicsRoot, stateRoot } = block.header;
@@ -239,7 +237,7 @@ export const harvestBlock = async (
       totalIssuance.toString(),
       timestamp,
     ];
-    const sql = `INSERT INTO block (
+    const sql = `INSERT INTO substrate_block (
         block_number,
         finalized,
         block_author,
@@ -280,11 +278,11 @@ export const harvestBlock = async (
         parent_hash = EXCLUDED.parent_hash,
         extrinsics_root = EXCLUDED.extrinsics_root,
         state_root = EXCLUDED.state_root
-      WHERE EXCLUDED.block_number = block.block_number
+      WHERE EXCLUDED.block_number = substrate_block.block_number
       ;`;
 
     try {
-      // await dbParamQuery(client, sql, data, loggerOptions);
+      await dbParamQuery(client, sql, data, loggerOptions);
       const endTime = new Date().getTime();
       logger.info(
         loggerOptions,
@@ -309,24 +307,23 @@ export const harvestBlock = async (
         section === 'system' && method === 'CodeUpdated',
     );
 
-    if (runtimeUpgrade) {
+    if (runtimeUpgrade || blockNumber === 0) {
       const specName = runtimeVersion.toJSON().specName;
       const specVersion = runtimeVersion.specVersion;
 
-      // await storeMetadata(
-      //   client,
-      //   blockNumber,
-      //   blockHash.toString(),
-      //   specName.toString(),
-      //   specVersion.toNumber(),
-      //   timestamp,
-      //   loggerOptions,
-      // );
+      await storeMetadata(
+        api,
+        client,
+        blockNumber,
+        blockHash.toString(),
+        specName.toString(),
+        specVersion.toNumber(),
+        timestamp,
+        loggerOptions,
+      );
     }
 
-    await Promise.all([
-
-    ])
+    // await Promise.all([])
 
   } catch (error) {
     logger.error(loggerOptions, `Error adding block #${blockNumber}: ${error}`);
@@ -340,6 +337,7 @@ export const harvestBlock = async (
 export const harvestEvmBlock = async (
   config: ScanerConfig,
   api: Web3 | undefined,
+  client: Client,
   blockNumber: number,
   loggerOptions: LoggerOptions,
 ): Promise<void> => {
@@ -353,7 +351,6 @@ export const harvestEvmBlock = async (
       block.parentHash,
       block.size,
       block.transactions.length,
-      block.transactions,
       block.gasUsed,
       block.gasLimit,
       block.stateRoot,
@@ -370,14 +367,13 @@ export const harvestEvmBlock = async (
       parent_hash,
       size,
       total_transactions,
-      transaction_list,
       gas_used,
       gas_limit,
       state_root,
       transactionsRoot,
       fee_recipient,
       extra_data,
-      timestamp,
+      timestamp
     ) VALUES (
       $1,
       $2,
@@ -391,20 +387,19 @@ export const harvestEvmBlock = async (
       $10,
       $11,
       $12,
-      $13,
-      $14,
+      $13
     )
-    ON CONFLICT (block_number)
-    DO UPDATE SET
-      block_author = EXCLUDED.block_author,
-      block_hash = EXCLUDED.block_hash,
-      parent_hash = EXCLUDED.parent_hash,
-      state_root = EXCLUDED.state_root
-    WHERE EXCLUDED.block_number = block.block_number
+      ON CONFLICT (block_number)
+      DO UPDATE SET
+        block_author = EXCLUDED.block_author,
+        block_hash = EXCLUDED.block_hash,
+        parent_hash = EXCLUDED.parent_hash,
+        state_root = EXCLUDED.state_root
+      WHERE EXCLUDED.block_number = evm_block.block_number
     ;`;
 
     try {
-      // await dbParamQuery(client, sql, data, loggerOptions);
+      await dbParamQuery(client, sql, data, loggerOptions);
       const endTime = new Date().getTime();
       logger.info(
         loggerOptions,
