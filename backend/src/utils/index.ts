@@ -1,4 +1,5 @@
 import { DeriveAccountRegistration } from '@polkadot/api-derive/types';
+import Web3 from 'web3';
 import { evmProvider, substrateProvider, isNodeSynced } from './connect';
 import { logger } from './logger';
 import { LoggerOptions, ScanerConfig } from './types'
@@ -26,6 +27,29 @@ const getDisplayName = (identity: DeriveAccountRegistration): string => {
   return identity.display || '';
 };
 
+const is_account = async (api: Web3, address: string) => {
+  let account_code = await api.eth.getCode(address);
+  if(account_code === '0x') {
+    return true
+  } else {
+    return false
+  }
+};
+
+const sanitize = function(obj: any) {
+  return Object.fromEntries(
+    Object.entries(obj)
+      .filter(([, v]) => v != null)
+      .map(([_, v]) => {
+        if (typeof v == 'string' && v.length == 42 && v.startsWith('0x'))
+          return [_, v.toLowerCase()];
+        else
+            return [_, v];
+      }
+    )
+  );
+};
+
 export { 
   evmProvider,
   logger,
@@ -38,5 +62,7 @@ export {
   substrateProvider,
   isNodeSynced,
   wait,
-  shortHash
+  shortHash,
+  is_account,
+  sanitize
 };

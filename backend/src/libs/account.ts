@@ -2,10 +2,9 @@ import * as Sentry from '@sentry/node';
 import { ApiPromise } from '@polkadot/api';
 import Web3 from 'web3';
 import { EventRecord } from '@polkadot/types/interfaces';
-import { Vec } from '@polkadot/types';
 import { Client } from 'pg';
 import _ from 'lodash';
-import { logger, LoggerOptions, dbParamQuery } from '../utils';
+import { logger, LoggerOptions, dbParamQuery, is_account} from '../utils';
 import { backendConfig } from '../config';
 
 Sentry.init({
@@ -236,7 +235,7 @@ export const updateAccountsInfo = async (
   });
   const uniqueAddresses = _.uniq(involvedAddresses);
   await Promise.all(
-    uniqueAddresses.map((address) =>
+    uniqueAddresses.map((address: string) =>
       updateAccountInfo(
         api,
         client,
@@ -268,24 +267,28 @@ export const processEvmAccountInfo = async (
 ): Promise<void> => {
 
   let balance = await api.eth.getBalance(address);
+  let is_account_type = await is_account(api, address);
 
   const data = [
     address,
     balance,
     timestamp,
-    block_height
+    block_height,
+    is_account_type
   ];
 
   const sql = `INSERT INTO evm_account (
     account_id,
     balances,
     timestamp,
-    block_height
+    block_height,
+    is_account
   ) VALUES (
     $1,
     $2,
     $3,
-    $4
+    $4,
+    $5
   )
     ON CONFLICT (account_id)
     DO UPDATE SET

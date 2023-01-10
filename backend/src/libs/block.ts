@@ -4,6 +4,7 @@ import { Client } from 'pg';
 import Web3 from 'web3';
 import { BlockNumber} from "web3-core";
 import { processEvmAccountInfo } from './account';
+import { processTransaction } from './transaction'
 import { backendConfig } from "../config";
 import { logger,LoggerOptions, dbParamQuery, ScanerConfig, dbQuery, getDisplayName, shortHash } from '../utils';
 
@@ -397,12 +398,13 @@ export const harvestEvmBlock = async (
         block_author = EXCLUDED.block_author,
         block_hash = EXCLUDED.block_hash,
         parent_hash = EXCLUDED.parent_hash,
-        state_root = EXCLUDED.state_root
+        state_root = EXCLUDED.state_root,
+        total_transactions = EXCLUDED.total_transactions
       WHERE EXCLUDED.block_number = evm_block.block_number
     ;`;
 
     try {
-      // await dbParamQuery(client, sql, data, loggerOptions);
+      await dbParamQuery(client, sql, data, loggerOptions);
       const endTime = new Date().getTime();
       logger.info(
         loggerOptions,
@@ -423,29 +425,31 @@ export const harvestEvmBlock = async (
     
     if (block.transactions) {
       for (let i = 0; i < block.transactions.length; i++) {
-          let txn = await api.eth.getTransaction(block.transactions[i]);
+        let txn = await api.eth.getTransaction(block.transactions[i]);
 
-          if(txn.from) {
-            processEvmAccountInfo(
-              api,
-              client,
-              txn.from,
-              block.timestamp,
-              block.number,
-              loggerOptions
-            )
-          };
-         
-          if(txn.to) {
-            processEvmAccountInfo(
-              api,
-              client,
-              txn.to,
-              block.timestamp,
-              block.number,
-              loggerOptions
-            )
-          }
+        await processTransaction(api, txn.hash, loggerOptions);
+
+        if(txn.from) {
+          processEvmAccountInfo(
+            api,
+            client,
+            txn.from,
+            block.timestamp,
+            block.number,
+            loggerOptions
+          )
+        };
+        
+        if(txn.to) {
+          processEvmAccountInfo(
+            api,
+            client,
+            txn.to,
+            block.timestamp,
+            block.number,
+            loggerOptions
+          )
+        }
       }
     }
 

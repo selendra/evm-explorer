@@ -72,7 +72,21 @@ CREATE TABLE IF NOT EXISTS substrate_account  (
 CREATE TABLE IF NOT EXISTS evm_account  (  
   account_id TEXT NOT NULL,
   balances NUMERIC(40,0) NOT NULL,
-  timestamp BIGINT NOT NULL,
   block_height BIGINT NOT NULL,
+  is_account BOOLEAN NOT NULL,
+  timestamp BIGINT NOT NULL,
   PRIMARY KEY ( account_id )  
 );
+
+CREATE TABLE IF NOT EXISTS evm_transaction  (  
+  transactio_hash TEXT NOT NULL,
+  transactio_index INT NOT NULL,
+  transactio_status BOOLEAN NOT NULL,
+  block_height BIGINT NOT NULL,
+  transaction_from TEXT NOT NULL,
+  transaction_to TEXT NOT NULL,
+  amount NUMERIC(40,0) NOT NULL,
+  timestamp BIGINT NOT NULL,
+  PRIMARY KEY ( transactio_hash )  
+);
+
