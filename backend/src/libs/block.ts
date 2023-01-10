@@ -427,15 +427,15 @@ export const harvestEvmBlock = async (
       for (let i = 0; i < block.transactions.length; i++) {
         let txn = await api.eth.getTransaction(block.transactions[i]);
 
-        await processTransaction(api, txn.hash, loggerOptions);
+        await processTransaction(api, client, txn.hash, txn.value, block.timestamp, loggerOptions);
 
         if(txn.from) {
           processEvmAccountInfo(
             api,
             client,
             txn.from,
-            block.timestamp,
             block.number,
+            block.timestamp,
             loggerOptions
           )
         };
@@ -445,8 +445,8 @@ export const harvestEvmBlock = async (
             api,
             client,
             txn.to,
-            block.timestamp,
             block.number,
+            block.timestamp,
             loggerOptions
           )
         }

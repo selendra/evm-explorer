@@ -261,8 +261,8 @@ export const processEvmAccountInfo = async (
   api: Web3,
   client: Client,
   address: string,
-  timestamp: number | string,
   block_height: number,
+  timestamp: any,
   loggerOptions: LoggerOptions
 ): Promise<void> => {
 
