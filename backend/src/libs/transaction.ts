@@ -80,18 +80,4 @@ export const processTransaction = async (
     scope.setTag('blockNumber', receipt.blockNumber);
     Sentry.captureException(error, scope);
   }
-
-  //   transactio_hash TEXT NOT NULL,
-  //   transactio_index INT NOT NULL,
-  //   transactio_status BOOLEAN NOT NULL,
-  //   block_height BIGINT NOT NULL,
-  //   transaction_from TEXT NOT NULL,
-  //   transaction_to TEXT NOT NULL,
-  //   amount TEXT NOT NULL,
-  //   timestamp BIGINT NOT NULL,
-  //   PRIMARY KEY ( transactio_hash ) 
 }
-
-// scanAccount(225259);
-// scanTransaction(225331);
-// scanAccount(225337);
