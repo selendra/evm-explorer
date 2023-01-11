@@ -185,17 +185,21 @@ export const harvestBlock = async (
       derivedBlock,
       totalIssuance,
       runtimeVersion,
-      activeEra,
       currentIndex,
     ] = await Promise.all([
       api.derive.chain.getBlock(blockHash),
       apiAt.query.balances.totalIssuance(),
       api.rpc.state.getRuntimeVersion(blockHash),
-      apiAt.query?.staking.activeEra
-        ? apiAt.query.staking.activeEra().then((res) => res.unwrap().index)
-        : 0,
       apiAt.query.session.currentIndex(),
     ]);
+
+    let activeEra;
+    try {
+      activeEra = await apiAt.query.staking.activeEra().then((res) => res.unwrap().index);
+    } catch (_error) {
+      activeEra = 0
+    }
+    
     const { block, author, events: blockEvents } = derivedBlock;
     // genesis block doesn't have author
     const blockAuthor = author ? author.toString() : '';

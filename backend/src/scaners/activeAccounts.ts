@@ -12,7 +12,7 @@ Sentry.init({
 });
 
 const loggerOptions = {
-  selendrascan: scanerName,
+  scaner: scanerName,
 };
 
 const config: ScanerConfig = backendConfig.scaners.find(
@@ -21,16 +21,16 @@ const config: ScanerConfig = backendConfig.scaners.find(
 
 const { chunkSize } = config;
 
-const crawler = async (delayedStart: boolean) => {
+const scaner = async (delayedStart: boolean) => {
   if (delayedStart && config.startDelay) {
     logger.debug(
       loggerOptions,
-      `Delaying active accounts crawler start for ${config.startDelay / 1000}s`,
+      `Delaying active accounts scaner start for ${config.startDelay / 1000}s`,
     );
     await wait(config.startDelay);
   }
 
-  logger.debug(loggerOptions, 'Running active accounts crawler...');
+  logger.debug(loggerOptions, 'Running active accounts scaner...');
 
   const client = await getClient(loggerOptions);
   const api = await substrateProvider(loggerOptions, config.apiCustomTypes);
@@ -95,11 +95,11 @@ const crawler = async (delayedStart: boolean) => {
     loggerOptions,
     `Next execution in ${(config.pollingTime / 60000).toFixed(0)}m...`,
   );
-  setTimeout(() => crawler(false), config.pollingTime);
+  setTimeout(() => scaner(false), config.pollingTime);
 };
 
-crawler(true).catch((error) => {
-  logger.error(loggerOptions, `Crawler error: ${error}`);
+scaner(true).catch((error) => {
+  logger.error(loggerOptions, `Scaner error: ${error}`);
   Sentry.captureException(error);
   process.exit(-1);
 });

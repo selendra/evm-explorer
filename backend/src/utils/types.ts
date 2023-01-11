@@ -3,13 +3,13 @@ import { EventRecord } from '@polkadot/types/interfaces';
 import { GenericExtrinsic } from '@polkadot/types';
 
 export interface LoggerOptions {
-  selendrascan: string;
+  scaner: string;
 }
 
 export interface ScanerConfig {
   name: string;
   enabled: boolean;
-  crawler: string;
+  scaner: string;
   apiCustomTypes?: string;
   startDelay?: number;
   mode?: string;

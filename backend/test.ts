@@ -1,7 +1,7 @@
 // import { evmProvider } from "./src/utils"
 
 // const loggerOptions = {
-//     selendrascan: "block",
+//     scaner: "block",
 //   };
   
 
@@ -19,7 +19,7 @@ import * as Sentry from '@sentry/node';
 import { getClient,  ScanerConfig, substrateProvider, isNodeSynced, wait, logger, evmProvider } from '../backend/src/utils';
 import { backendConfig } from './src/config'
 
-const selendraScan = 'blockHarvester';
+const scaner = 'blockHarvester';
 
 Sentry.init({
   dsn: backendConfig.sentryDSN,
@@ -27,11 +27,11 @@ Sentry.init({
 });
 
 const loggerOptions = {
-  selendrascan: selendraScan,
+  scaner: scaner,
 };
 
 const config: any = backendConfig.scaners.find(
-  ({ name }) => name === selendraScan,
+  ({ name }) => name === scaner,
 );
 
 const testScan = async () => {

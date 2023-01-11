@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/node';
 import Web3 from 'web3';
 import { backendConfig } from "../config";
-import { logger, LoggerOptions, dbParamQuery, shortHash } from '../utils';
+import { logger, LoggerOptions, dbParamQuery } from '../utils';
 import { Client } from 'pg';
 
 Sentry.init({

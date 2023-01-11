@@ -14,6 +14,6 @@
     "skipLibCheck": true,
     "strictNullChecks":false,
   },
-  "include": ["src", "index.d.ts"],
-  "exclude": ["node_modules", "built"]
+  "include": ["src", "index.d.ts", "tsconfig.eslint.json"],
+  "exclude": ["node_modules", "build"]
 }

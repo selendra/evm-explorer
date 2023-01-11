@@ -72,6 +72,11 @@ const reverseRange = (
 const range = (start: number, stop: number, step: number): number[] =>
   Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
 
+export const getRandom = (arr: any[], n: number): any[] => {
+  const shuffled = [...arr].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, n);
+};
+
 export { 
   evmProvider,
   logger,

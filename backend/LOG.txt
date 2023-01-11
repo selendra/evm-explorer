@@ -1,0 +1,358 @@
+yarn run v1.22.19
+$ tsc && node build/index.js
+{"level":30,"time":1673425371656,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Delaying block harvester scaner start for 10s"}
+{"level":30,"time":1673425371665,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Starting block listener..."}
+{"level":30,"time":1673425372803,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Connecting to DB success"}
+{"level":30,"time":1673425373079,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849601 (0xa255…7bbb) in 0.14s"}
+{"level":30,"time":1673425381658,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Starting block harvester..."}
+{"level":30,"time":1673425390301,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Connecting to DB success"}
+{"level":30,"time":1673425390302,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Starting health check"}
+{"level":30,"time":1673425392296,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #4, deleting block from block table!"}
+{"level":30,"time":1673425394389,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #849582, deleting block from block table!"}
+{"level":30,"time":1673425397429,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #6, deleting block from block table!"}
+{"level":30,"time":1673425401849,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #849583, deleting block from block table!"}
+{"level":30,"time":1673425403930,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #8, deleting block from block table!"}
+{"level":30,"time":1673425405881,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #849584, deleting block from block table!"}
+{"level":30,"time":1673425409863,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #3, deleting block from block table!"}
+{"level":30,"time":1673425413306,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #5, deleting block from block table!"}
+{"level":30,"time":1673425415223,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #7, deleting block from block table!"}
+{"level":30,"time":1673425417114,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #2, deleting block from block table!"}
+{"level":30,"time":1673425419464,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Health check failed for block #9, deleting block from block table!"}
+{"level":30,"time":1673425420337,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849602 (0xb210…87f1) in 44.81s"}
+{"level":30,"time":1673425421711,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849603 (0x5798…c099) in 36.65s"}
+{"level":30,"time":1673425422540,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Detected gap! Harvesting blocks from #849600 to #849582"}
+{"level":30,"time":1673425422540,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processing chunks of 10 blocks"}
+{"level":30,"time":1673425423295,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849603 (0x0950…8d64) in 37.77s"}
+{"level":30,"time":1673425424071,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849582 (0xe62d…ddfe) in 1.53s"}
+{"level":30,"time":1673425424310,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849604 (0x475b…9c37) in 33.68s"}
+{"level":30,"time":1673425425136,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849591 (0x6557…dd87) in 2.59s"}
+{"level":30,"time":1673425425410,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849605 (0x8790…b06c) in 27.42s"}
+{"level":30,"time":1673425426157,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849583 (0x0fac…a836) in 3.62s"}
+{"level":30,"time":1673425426260,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849606 (0xf213…97e2) in 21.72s"}
+{"level":30,"time":1673425426577,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849585 (0xc3fa…a0d9) in 4.03s"}
+{"level":30,"time":1673425426736,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849607 (0x61b4…9399) in 16.03s"}
+{"level":30,"time":1673425426841,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849586 (0xf037…236a) in 4.30s"}
+{"level":30,"time":1673425427270,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849608 (0x91b9…73c0) in 11.86s"}
+{"level":30,"time":1673425427377,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849587 (0xfcd3…a884) in 4.83s"}
+{"level":30,"time":1673425427896,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849584 (0xae38…a709) in 5.35s"}
+{"level":30,"time":1673425428661,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849588 (0x8361…5dfa) in 6.12s"}
+{"level":30,"time":1673425429177,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849590 (0xa322…9b28) in 6.63s"}
+{"level":30,"time":1673425430202,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849589 (0xf227…b02b) in 7.66s"}
+{"level":30,"time":1673425435786,"pid":28231,"hostname":"bumblebee","scaner":"activeAccounts","msg":"Connecting to DB success"}
+{"level":30,"time":1673425436337,"pid":28231,"hostname":"bumblebee","scaner":"activeAccounts","msg":"Got 3025 active accounts"}
+{"level":30,"time":1673425436337,"pid":28231,"hostname":"bumblebee","scaner":"activeAccounts","msg":"Processing chunks of 100 accounts"}
+{"level":30,"time":1673425450237,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849609 (0x5317…8bc1) in 22.47s"}
+{"level":30,"time":1673425450316,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849610 (0xc48f…1c70) in 22.50s"}
+{"level":30,"time":1673425450396,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849611 (0x1251…6646) in 20.88s"}
+{"level":30,"time":1673425450553,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849612 (0x4727…cfb6) in 13.88s"}
+{"level":30,"time":1673425450711,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849613 (0xc363…fcb0) in 9.77s"}
+{"level":30,"time":1673425451112,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849614 (0xdc95…c10b) in 3.63s"}
+{"level":30,"time":1673425452475,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processed chunk 1/2 [50.00%] in 29.93s min/max/avg: 29.93/29.93/29.93 cur/avg bps: 0.33/0.33"}
+{"level":30,"time":1673425452967,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849592 (0xe6b0…3cb0) in 0.49s"}
+{"level":30,"time":1673425453103,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849594 (0x12ac…df73) in 0.63s"}
+{"level":30,"time":1673425453202,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849596 (0x5896…da5e) in 0.73s"}
+{"level":30,"time":1673425453313,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849593 (0x9508…875e) in 0.84s"}
+{"level":30,"time":1673425453417,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849597 (0x849f…d93b) in 0.94s"}
+{"level":30,"time":1673425453792,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849595 (0x6aea…9247) in 1.32s"}
+{"level":30,"time":1673425454183,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849599 (0x55fa…b366) in 1.71s"}
+{"level":30,"time":1673425454307,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849600 (0xb2d5…dbb8) in 1.83s"}
+{"level":30,"time":1673425454467,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #849598 (0xc070…61d9) in 1.99s"}
+{"level":30,"time":1673425455024,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 22.78s"}
+{"level":30,"time":1673425457261,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 18.70s"}
+{"level":30,"time":1673425459671,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 18.06s"}
+{"level":30,"time":1673425459789,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 16.16s"}
+{"level":30,"time":1673425460059,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 15.13s"}
+{"level":30,"time":1673425461686,"pid":28231,"hostname":"bumblebee","scaner":"activeAccounts","msg":"Processed chunk 1/31 in 25.35s"}
+{"level":30,"time":1673425461890,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 13.77s"}
+{"level":30,"time":1673425462116,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 13.05s"}
+{"level":30,"time":1673425462712,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 12.68s"}
+{"level":30,"time":1673425463096,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849615 (0x6a95…1358) in 10.46s"}
+{"level":30,"time":1673425465716,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849616 (0x741d…795d) in 6.17s"}
+{"level":30,"time":1673425469211,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 16.38s"}
+{"level":30,"time":1673425469366,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 15.53s"}
+{"level":30,"time":1673425469436,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 14.47s"}
+{"level":30,"time":1673425469547,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 14.52s"}
+{"level":30,"time":1673425469611,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 12.53s"}
+{"level":30,"time":1673425469669,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 12.41s"}
+{"level":30,"time":1673425469751,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849617 (0x289c…9a84) in 4.88s"}
+{"level":30,"time":1673425469819,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 10.34s"}
+{"level":30,"time":1673425469846,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processed chunk 2/2 [100.00%] in 17.37s min/max/avg: 17.37/29.93/23.65 cur/avg bps: 0.58/0.42"}
+{"level":30,"time":1673425469846,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Detected gap! Harvesting blocks from #849580 to #1"}
+{"level":30,"time":1673425470004,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processing chunks of 10 blocks"}
+{"level":30,"time":1673425471120,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #2 (0xb9f5…64b4) in 1.11s"}
+{"level":30,"time":1673425471767,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #9 (0xc7b6…67be) in 1.76s"}
+{"level":30,"time":1673425472032,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #3 (0xe3aa…b5b1) in 2.03s"}
+{"level":30,"time":1673425472287,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #5 (0xfe7b…7ae7) in 2.28s"}
+{"level":30,"time":1673425472308,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 12.64s"}
+{"level":30,"time":1673425472478,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 12.69s"}
+{"level":30,"time":1673425472478,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #7 (0x2c99…75ed) in 2.47s"}
+{"level":30,"time":1673425472786,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 12.73s"}
+{"level":30,"time":1673425472792,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #10 (0x3630…876d) in 2.79s"}
+{"level":30,"time":1673425472968,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 11.20s"}
+{"level":30,"time":1673425472968,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #4 (0x8c81…5721) in 2.96s"}
+{"level":30,"time":1673425473037,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 11.15s"}
+{"level":30,"time":1673425473047,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #6 (0x112e…6968) in 3.04s"}
+{"level":30,"time":1673425473432,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 11.31s"}
+{"level":30,"time":1673425473477,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #8 (0xa3ac…3526) in 3.47s"}
+{"level":30,"time":1673425473992,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 11.28s"}
+{"level":30,"time":1673425474028,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #1 (0x7de7…886a) in 4.02s"}
+{"level":30,"time":1673425480700,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849618 (0x0dfe…855d) in 9.12s"}
+{"level":30,"time":1673425482270,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849607 (0x61b4…9399) in 13.27s"}
+{"level":30,"time":1673425482467,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 13.26s"}
+{"level":30,"time":1673425482737,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 13.37s"}
+{"level":30,"time":1673425483408,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 13.97s"}
+{"level":30,"time":1673425483680,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 14.07s"}
+{"level":30,"time":1673425483795,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 14.13s"}
+{"level":30,"time":1673425483906,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849619 (0xcfd5…476f) in 6.37s"}
+{"level":30,"time":1673425484112,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 14.29s"}
+{"level":30,"time":1673425485418,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 13.32s"}
+{"level":30,"time":1673425485551,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 13.24s"}
+{"level":30,"time":1673425485618,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 13.14s"}
+{"level":30,"time":1673425486095,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 13.31s"}
+{"level":30,"time":1673425486950,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 13.98s"}
+{"level":30,"time":1673425487471,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 14.43s"}
+{"level":30,"time":1673425487695,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 14.26s"}
+{"level":30,"time":1673425487819,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 13.83s"}
+{"level":30,"time":1673425488192,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849620 (0x088f…dda9) in 5.67s"}
+{"level":30,"time":1673425490727,"pid":28231,"hostname":"bumblebee","scaner":"activeAccounts","msg":"Processed chunk 2/31 in 29.04s"}
+{"level":30,"time":1673425492722,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 12.44s"}
+{"level":30,"time":1673425492835,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processed chunk 1/84958 [0.00%] in 22.83s min/max/avg: 22.83/22.83/22.83 cur/avg bps: 0.44/0.44"}
+{"level":30,"time":1673425493407,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #11 (0x2cd4…1792) in 0.57s"}
+{"level":30,"time":1673425493563,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #15 (0x30af…5269) in 0.73s"}
+{"level":30,"time":1673425493933,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #18 (0xb225…eefd) in 1.10s"}
+{"level":30,"time":1673425494051,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #12 (0x76e1…9e41) in 1.22s"}
+{"level":30,"time":1673425494142,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #16 (0x2e20…8bc2) in 1.31s"}
+{"level":30,"time":1673425494274,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #20 (0x4623…3eb9) in 1.44s"}
+{"level":30,"time":1673425494402,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #17 (0xbfd0…c35c) in 1.56s"}
+{"level":30,"time":1673425494468,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849608 (0x3116…06aa) in 12.20s"}
+{"level":30,"time":1673425494516,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #19 (0xd197…0424) in 1.68s"}
+{"level":30,"time":1673425494594,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 12.13s"}
+{"level":30,"time":1673425494637,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #13 (0x1462…5ba4) in 1.80s"}
+{"level":30,"time":1673425494834,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #14 (0x3791…4321) in 2.00s"}
+{"level":30,"time":1673425496223,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 13.48s"}
+{"level":30,"time":1673425496729,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 13.32s"}
+{"level":30,"time":1673425497673,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849621 (0xd948…edb8) in 8.46s"}
+{"level":30,"time":1673425498096,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 14.42s"}
+{"level":30,"time":1673425498459,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 14.66s"}
+{"level":30,"time":1673425498841,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 14.73s"}
+{"level":30,"time":1673425498971,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 13.68s"}
+{"level":30,"time":1673425499037,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 13.62s"}
+{"level":30,"time":1673425499934,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 14.38s"}
+{"level":30,"time":1673425500755,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 15.14s"}
+{"level":30,"time":1673425501078,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 14.98s"}
+{"level":30,"time":1673425501509,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 14.56s"}
+{"level":30,"time":1673425501930,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 14.46s"}
+{"level":30,"time":1673425502084,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 14.39s"}
+{"level":30,"time":1673425502170,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 14.35s"}
+{"level":30,"time":1673425503996,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849622 (0xbff0…1124) in 9.08s"}
+{"level":30,"time":1673425513911,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 21.27s"}
+{"level":30,"time":1673425514518,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 21.80s"}
+{"level":30,"time":1673425515169,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849623 (0x1cae…9070) in 13.80s"}
+{"level":30,"time":1673425515809,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 21.34s"}
+{"level":30,"time":1673425516344,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 21.75s"}
+{"level":30,"time":1673425519292,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849609 (0x5317…8bc1) in 23.16s"}
+{"level":30,"time":1673425519809,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 23.59s"}
+{"level":30,"time":1673425520289,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 23.56s"}
+{"level":30,"time":1673425520880,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849624 (0xed79…9b8a) in 13.20s"}
+{"level":30,"time":1673425520894,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processed chunk 2/84958 [0.00%] in 28.06s min/max/avg: 22.83/28.06/25.45 cur/avg bps: 0.36/0.39"}
+{"level":30,"time":1673425521254,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 23.16s"}
+{"level":30,"time":1673425521380,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #21 (0x6def…5ac5) in 0.49s"}
+{"level":30,"time":1673425521415,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849625 (0x172d…c819) in 7.91s"}
+{"level":30,"time":1673425521619,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #25 (0xacd0…3808) in 0.72s"}
+{"level":30,"time":1673425521825,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #27 (0x8931…0bde) in 0.93s"}
+{"level":30,"time":1673425522070,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #22 (0x363a…b698) in 1.18s"}
+{"level":30,"time":1673425522072,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 23.23s"}
+{"level":30,"time":1673425522230,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #24 (0x3127…5909) in 1.34s"}
+{"level":30,"time":1673425522234,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 23.26s"}
+{"level":30,"time":1673425522416,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #26 (0xee22…4887) in 1.52s"}
+{"level":30,"time":1673425522425,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 23.39s"}
+{"level":30,"time":1673425522625,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #30 (0x89e3…8a95) in 1.73s"}
+{"level":30,"time":1673425522869,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #23 (0xb27e…9a0c) in 1.98s"}
+{"level":30,"time":1673425523520,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #29 (0x7578…5121) in 2.63s"}
+{"level":30,"time":1673425524076,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #28 (0xf6dc…4e15) in 3.18s"}
+{"level":30,"time":1673425525936,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 24.43s"}
+{"level":30,"time":1673425526417,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 24.49s"}
+{"level":30,"time":1673425527322,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 25.24s"}
+{"level":30,"time":1673425527947,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 25.78s"}
+{"level":30,"time":1673425530013,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849626 (0xb38d…6c7c) in 10.54s"}
+{"level":30,"time":1673425530091,"pid":28231,"hostname":"bumblebee","scaner":"activeAccounts","msg":"Processed chunk 3/31 in 39.36s"}
+{"level":30,"time":1673425534263,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 21.24s"}
+{"level":30,"time":1673425536093,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 22.18s"}
+{"level":30,"time":1673425536173,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 21.65s"}
+{"level":30,"time":1673425537293,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849627 (0xd0cf…874f) in 11.78s"}
+{"level":30,"time":1673425538231,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 22.42s"}
+{"level":30,"time":1673425538402,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 22.06s"}
+{"level":30,"time":1673425538606,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 20.16s"}
+{"level":30,"time":1673425538766,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849610 (0xc48f…1c70) in 19.47s"}
+{"level":30,"time":1673425541332,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 21.52s"}
+{"level":30,"time":1673425541726,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 21.44s"}
+{"level":30,"time":1673425541885,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849628 (0xfb0d…1d65) in 10.68s"}
+{"level":30,"time":1673425542194,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 20.94s"}
+{"level":30,"time":1673425544050,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 21.98s"}
+{"level":30,"time":1673425544286,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 22.05s"}
+{"level":30,"time":1673425544723,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processed chunk 3/84958 [0.00%] in 23.83s min/max/avg: 22.83/28.06/24.91 cur/avg bps: 0.42/0.40"}
+{"level":30,"time":1673425544950,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849629 (0x3beb…841d) in 8.30s"}
+{"level":30,"time":1673425545773,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 23.35s"}
+{"level":30,"time":1673425545843,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #31 (0x197d…1e67) in 1.12s"}
+{"level":30,"time":1673425546266,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #38 (0x031a…90ca) in 1.54s"}
+{"level":30,"time":1673425547016,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #36 (0x6339…1027) in 2.29s"}
+{"level":30,"time":1673425547888,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #32 (0x6bd7…6d1e) in 3.16s"}
+{"level":30,"time":1673425548832,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #39 (0xb211…1256) in 4.11s"}
+{"level":30,"time":1673425549927,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #37 (0xf3c1…5888) in 5.20s"}
+{"level":30,"time":1673425552128,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #34 (0xeacd…d031) in 7.40s"}
+{"level":30,"time":1673425553385,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #40 (0x5d1b…1c32) in 8.66s"}
+{"level":30,"time":1673425554056,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 28.49s"}
+{"level":30,"time":1673425554187,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #33 (0xc887…6582) in 9.46s"}
+{"level":30,"time":1673425554930,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 28.99s"}
+{"level":30,"time":1673425555184,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #35 (0x486e…116c) in 10.46s"}
+{"level":30,"time":1673425555649,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 27.70s"}
+{"level":30,"time":1673425560424,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 26.28s"}
+{"level":30,"time":1673425560552,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 26.29s"}
+{"level":30,"time":1673425560891,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 24.93s"}
+{"level":30,"time":1673425561042,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 24.95s"}
+{"level":30,"time":1673425561286,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 25.11s"}
+{"level":30,"time":1673425561650,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849630 (0x1113…f2e0) in 18.01s"}
+{"level":30,"time":1673425563215,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849631 (0x7188…53c4) in 11.49s"}
+{"level":30,"time":1673425564910,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849632 (0x7040…ec29) in 8.99s"}
+{"level":30,"time":1673425565538,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 27.31s"}
+{"level":30,"time":1673425565916,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 27.51s"}
+{"level":30,"time":1673425566120,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 27.51s"}
+{"level":30,"time":1673425566489,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849611 (0x1251…6646) in 27.72s"}
+{"level":30,"time":1673425566734,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 26.09s"}
+{"level":30,"time":1673425566893,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 25.56s"}
+{"level":30,"time":1673425567087,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 25.36s"}
+{"level":30,"time":1673425568036,"pid":28231,"hostname":"bumblebee","scaner":"activeAccounts","msg":"Processed chunk 4/31 in 37.94s"}
+{"level":30,"time":1673425568195,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 26.00s"}
+{"level":30,"time":1673425568413,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849633 (0xee39…6cc4) in 7.49s"}
+{"level":30,"time":1673425571226,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 27.18s"}
+{"level":30,"time":1673425571306,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 27.02s"}
+{"level":30,"time":1673425571440,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processed chunk 4/84958 [0.00%] in 26.72s min/max/avg: 22.83/28.06/25.36 cur/avg bps: 0.37/0.39"}
+{"level":30,"time":1673425571570,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 25.80s"}
+{"level":30,"time":1673425572098,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #45 (0xaf5e…bdbf) in 0.66s"}
+{"level":30,"time":1673425572381,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #46 (0x993b…0633) in 0.94s"}
+{"level":30,"time":1673425572684,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #41 (0x7e7a…7138) in 1.24s"}
+{"level":30,"time":1673425572891,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #44 (0xb0b3…dd5e) in 1.45s"}
+{"level":30,"time":1673425573038,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #43 (0x633d…b84e) in 1.60s"}
+{"level":30,"time":1673425573129,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #48 (0xaeae…aa82) in 1.69s"}
+{"level":30,"time":1673425573212,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #42 (0xe0d2…30ea) in 1.77s"}
+{"level":30,"time":1673425573263,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 20.08s"}
+{"level":30,"time":1673425573288,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #47 (0xa19c…35d5) in 1.85s"}
+{"level":30,"time":1673425573357,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 19.30s"}
+{"level":30,"time":1673425573372,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #49 (0xb1e5…1ad9) in 1.93s"}
+{"level":30,"time":1673425573456,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 18.53s"}
+{"level":30,"time":1673425573527,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #50 (0x7ec4…1325) in 2.08s"}
+{"level":30,"time":1673425576200,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849634 (0xa27c…92de) in 9.26s"}
+{"level":30,"time":1673425576268,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 15.95s"}
+{"level":30,"time":1673425576425,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 16.00s"}
+{"level":30,"time":1673425576590,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 16.04s"}
+{"level":30,"time":1673425576707,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 15.82s"}
+{"level":30,"time":1673425578672,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 17.63s"}
+{"level":30,"time":1673425578847,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 17.56s"}
+{"level":30,"time":1673425579286,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 16.39s"}
+{"level":30,"time":1673425579434,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849635 (0x7b75…3dc1) in 6.71s"}
+{"level":30,"time":1673425580414,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 14.88s"}
+{"level":30,"time":1673425580504,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 14.38s"}
+{"level":30,"time":1673425580598,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849612 (0x4727…cfb6) in 14.11s"}
+{"level":30,"time":1673425580688,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 13.95s"}
+{"level":30,"time":1673425583185,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849636 (0xf45c…bd95) in 4.44s"}
+{"level":30,"time":1673425583390,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 12.25s"}
+{"level":30,"time":1673425583476,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 12.25s"}
+{"level":30,"time":1673425583619,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 12.31s"}
+{"level":30,"time":1673425583813,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 12.24s"}
+{"level":30,"time":1673425583933,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processed chunk 5/84958 [0.01%] in 12.49s min/max/avg: 12.49/28.06/22.79 cur/avg bps: 0.80/0.44"}
+{"level":30,"time":1673425584304,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #51 (0x1a00…b40c) in 0.37s"}
+{"level":30,"time":1673425584499,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #54 (0x2eda…67a7) in 0.56s"}
+{"level":30,"time":1673425584832,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #56 (0xc7ef…4b27) in 0.90s"}
+{"level":30,"time":1673425585069,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #52 (0xd448…fcfc) in 1.14s"}
+{"level":30,"time":1673425585248,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #53 (0x232d…90ea) in 1.31s"}
+{"level":30,"time":1673425585352,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #60 (0xb4a3…f321) in 1.42s"}
+{"level":30,"time":1673425585367,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 12.17s"}
+{"level":30,"time":1673425585423,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #58 (0x6ff6…3ba4) in 1.49s"}
+{"level":30,"time":1673425585426,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 12.16s"}
+{"level":30,"time":1673425585526,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #57 (0xb24c…1ec7) in 1.59s"}
+{"level":30,"time":1673425585542,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 12.19s"}
+{"level":30,"time":1673425585592,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #55 (0x64eb…d676) in 1.66s"}
+{"level":30,"time":1673425585652,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 12.20s"}
+{"level":30,"time":1673425585783,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #59 (0x0b74…b176) in 1.85s"}
+{"level":30,"time":1673425585882,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 11.20s"}
+{"level":30,"time":1673425587385,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 11.12s"}
+{"level":30,"time":1673425587452,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 11.03s"}
+{"level":30,"time":1673425587549,"pid":28231,"hostname":"bumblebee","scaner":"activeAccounts","msg":"Processed chunk 5/31 in 19.51s"}
+{"level":30,"time":1673425587549,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 10.96s"}
+{"level":30,"time":1673425587607,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 10.90s"}
+{"level":30,"time":1673425587644,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 9.38s"}
+{"level":30,"time":1673425587700,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 9.03s"}
+{"level":30,"time":1673425589180,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 10.33s"}
+{"level":30,"time":1673425589421,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 10.13s"}
+{"level":30,"time":1673425589658,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849637 (0xa4c2…ea6e) in 5.10s"}
+{"level":30,"time":1673425591949,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 11.54s"}
+{"level":30,"time":1673425592137,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 11.63s"}
+{"level":30,"time":1673425592366,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 11.77s"}
+{"level":30,"time":1673425592478,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 11.79s"}
+{"level":30,"time":1673425592617,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849613 (0xc363…fcb0) in 11.18s"}
+{"level":30,"time":1673425593689,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 10.30s"}
+{"level":30,"time":1673425593769,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 10.15s"}
+{"level":30,"time":1673425593962,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 10.15s"}
+{"level":30,"time":1673425595186,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 9.92s"}
+{"level":30,"time":1673425595278,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 9.91s"}
+{"level":30,"time":1673425595710,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 10.28s"}
+{"level":30,"time":1673425596324,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 10.78s"}
+{"level":30,"time":1673425597122,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849638 (0x8841…ad12) in 5.74s"}
+{"level":30,"time":1673425597655,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 11.77s"}
+{"level":30,"time":1673425599891,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processed chunk 6/84958 [0.01%] in 15.96s min/max/avg: 12.49/28.06/21.65 cur/avg bps: 0.63/0.46"}
+{"level":30,"time":1673425600218,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 12.83s"}
+{"level":30,"time":1673425600371,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #61 (0xfa8e…ae45) in 0.48s"}
+{"level":30,"time":1673425600545,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 13.09s"}
+{"level":30,"time":1673425600574,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #65 (0x984a…d405) in 0.68s"}
+{"level":30,"time":1673425600964,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 13.41s"}
+{"level":30,"time":1673425600984,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #62 (0x8316…f94c) in 1.09s"}
+{"level":30,"time":1673425601241,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 13.63s"}
+{"level":30,"time":1673425601284,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #66 (0xb753…323f) in 1.39s"}
+{"level":30,"time":1673425601347,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 13.70s"}
+{"level":30,"time":1673425601441,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #70 (0x22f2…74de) in 1.55s"}
+{"level":30,"time":1673425601495,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 13.79s"}
+{"level":30,"time":1673425601539,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #68 (0x6b22…6446) in 1.65s"}
+{"level":30,"time":1673425601579,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 12.45s"}
+{"level":30,"time":1673425601639,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #69 (0x7955…107d) in 1.75s"}
+{"level":30,"time":1673425601639,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 12.46s"}
+{"level":30,"time":1673425601764,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #63 (0x5280…f142) in 1.87s"}
+{"level":30,"time":1673425601871,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #67 (0x7fec…f719) in 1.98s"}
+{"level":30,"time":1673425601929,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 12.51s"}
+{"level":30,"time":1673425602015,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #64 (0xad2c…b362) in 2.12s"}
+{"level":30,"time":1673425605922,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849639 (0x6948…2fd7) in 8.57s"}
+{"level":30,"time":1673425606907,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849639 (0x671a…6664) in 8.91s"}
+{"level":30,"time":1673425607209,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 15.26s"}
+{"level":30,"time":1673425607343,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 15.21s"}
+{"level":30,"time":1673425607434,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 15.07s"}
+{"level":30,"time":1673425607498,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 15.02s"}
+{"level":30,"time":1673425607574,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849614 (0xdc95…c10b) in 14.96s"}
+{"level":30,"time":1673425610205,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 16.52s"}
+{"level":30,"time":1673425610574,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 16.80s"}
+{"level":30,"time":1673425612078,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849616 (0x741d…795d) in 16.95s"}
+{"level":30,"time":1673425612204,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 17.02s"}
+{"level":30,"time":1673425612342,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 17.06s"}
+{"level":30,"time":1673425612445,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 16.73s"}
+{"level":30,"time":1673425613043,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849640 (0xf237…c51c) in 9.70s"}
+{"level":30,"time":1673425613364,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 17.04s"}
+{"level":30,"time":1673425614550,"pid":28231,"hostname":"bumblebee","scaner":"activeAccounts","msg":"Processed chunk 6/31 in 27.00s"}
+{"level":30,"time":1673425617803,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 20.15s"}
+{"level":30,"time":1673425620284,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849616 (0x741d…795d) in 20.07s"}
+{"level":30,"time":1673425620407,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849616 (0x741d…795d) in 19.86s"}
+{"level":30,"time":1673425620477,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849616 (0x741d…795d) in 19.51s"}
+{"level":30,"time":1673425620637,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849616 (0x741d…795d) in 19.40s"}
+{"level":30,"time":1673425620843,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 19.50s"}
+{"level":30,"time":1673425621088,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Processed chunk 7/84958 [0.01%] in 21.20s min/max/avg: 12.49/28.06/21.58 cur/avg bps: 0.47/0.46"}
+{"level":30,"time":1673425621214,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Added block #849641 (0x68c4…ffc6) in 12.02s"}
+{"level":30,"time":1673425621590,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 20.09s"}
+{"level":30,"time":1673425621642,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849615 (0x6a95…1358) in 20.06s"}
+{"level":30,"time":1673425621643,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #71 (0x7200…deaa) in 0.56s"}
+{"level":30,"time":1673425621783,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #78 (0xd050…441d) in 0.69s"}
+{"level":30,"time":1673425621813,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849616 (0x741d…795d) in 20.17s"}
+{"level":30,"time":1673425622020,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #72 (0x9e57…3261) in 0.93s"}
+{"level":30,"time":1673425622246,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #73 (0xbe73…6881) in 1.16s"}
+{"level":30,"time":1673425622453,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #74 (0xbfd9…f1e6) in 1.36s"}
+{"level":30,"time":1673425622488,"pid":28229,"hostname":"bumblebee","scaner":"blockListener","msg":"Updated finalized block #849616 (0x741d…795d) in 20.56s"}
+{"level":30,"time":1673425622679,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #79 (0x5b56…0b06) in 1.59s"}
+{"level":30,"time":1673425623023,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #80 (0xdbae…9d7d) in 1.93s"}
+{"level":30,"time":1673425623888,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #76 (0x96d3…f5e5) in 2.80s"}
+{"level":30,"time":1673425624247,"pid":28230,"hostname":"bumblebee","scaner":"blockHarvester","msg":"Added block #77 (0xfef6…8f82) in 3.16s"}
