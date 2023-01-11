@@ -1,33 +1,35 @@
+
+// @ts-check
 import * as Sentry from '@sentry/node';
 import { ApiPromise } from '@polkadot/api';
+import { DeriveAccountRegistration } from '@polkadot/api-derive/types';
 import { Client } from 'pg';
 import Web3 from 'web3';
-import { BlockNumber} from "web3-core";
-import { processEvmAccountInfo } from './account';
+import { logger, ScanerConfig, LoggerOptions, dbParamQuery, dbQuery, chunker, range, reverseRange, shortHash } from '../utils';
+import { backendConfig } from '../config';
+import { processLogs } from './log';
+import { processEvents } from './event';
+import { processExtrinsics } from './extrinsic';
+import { updateAccountsInfo, processEvmAccountInfo } from './account';
 import { processTransaction } from './transaction'
-import { backendConfig } from "../config";
-import { logger,LoggerOptions, dbParamQuery, ScanerConfig, dbQuery, getDisplayName, shortHash } from '../utils';
 
 Sentry.init({
   dsn: backendConfig.sentryDSN,
   tracesSampleRate: 1.0,
 });
 
-// get block detail - EVM
-const getEvmBlock = async (
-  api: Web3,
-  blockNumber: BlockNumber,
-  loggerOptions: LoggerOptions,
-) => {
-  try {
-    return api.eth.getBlock(blockNumber);
-  } catch (error) {
-    logger.error(loggerOptions, `Get Evm Block Error: ${error}`);
-    Sentry.captureException(error);
+export const getDisplayName = (identity: DeriveAccountRegistration): string => {
+  if (
+    identity.displayParent &&
+    identity.displayParent !== '' &&
+    identity.display &&
+    identity.display !== ''
+  ) {
+    return `${identity.displayParent} / ${identity.display}`;
   }
-}
+  return identity.display || '';
+};
 
-// update finalized block status - Substrate
 export const updateFinalized = async (
   client: Client,
   finalizedBlock: number,
@@ -44,7 +46,6 @@ export const updateFinalized = async (
   }
 };
 
-// add error block to database as logs - both
 export const logHarvestError = async (
   client: Client,
   blockNumber: number,
@@ -66,7 +67,6 @@ export const logHarvestError = async (
   await dbParamQuery(client, query, data, loggerOptions);
 };
 
-// check block healthy delete if failed - Substrate
 export const healthCheck = async (
   config: ScanerConfig,
   client: Client,
@@ -109,7 +109,6 @@ export const healthCheck = async (
   );
 };
 
-// store chain metadata - Substrate
 export const storeMetadata = async (
   api: ApiPromise,
   client: Client,
@@ -170,7 +169,6 @@ export const storeMetadata = async (
   await dbParamQuery(client, query, data, loggerOptions);
 };
 
-// harvest block from blocknumber - Substrate
 export const harvestBlock = async (
   config: ScanerConfig,
   api: ApiPromise,
@@ -204,7 +202,6 @@ export const harvestBlock = async (
     const { parentHash, extrinsicsRoot, stateRoot } = block.header;
     const blockAuthorIdentity = await api.derive.accounts.info(blockAuthor);
     const blockAuthorName = getDisplayName(blockAuthorIdentity.identity);
-
     // genesis block doesn't expose timestamp or any other extrinsic
     const timestamp =
       blockNumber !== 0
@@ -226,7 +223,7 @@ export const harvestBlock = async (
     const data = [
       blockNumber,
       false,
-      blockAuthor.toString() ? blockAuthor.toString() : '',
+      blockAuthor?.toString() ? blockAuthor.toString() : '',
       blockAuthorName,
       blockHash.toString(),
       parentHash.toString(),
@@ -240,7 +237,7 @@ export const harvestBlock = async (
       totalIssuance.toString(),
       timestamp,
     ];
-    const sql = `INSERT INTO substrate_block (
+    const sql = `INSERT INTO block (
         block_number,
         finalized,
         block_author,
@@ -281,9 +278,8 @@ export const harvestBlock = async (
         parent_hash = EXCLUDED.parent_hash,
         extrinsics_root = EXCLUDED.extrinsics_root,
         state_root = EXCLUDED.state_root
-      WHERE EXCLUDED.block_number = substrate_block.block_number
+      WHERE EXCLUDED.block_number = block.block_number
       ;`;
-
     try {
       await dbParamQuery(client, sql, data, loggerOptions);
       const endTime = new Date().getTime();
@@ -310,9 +306,13 @@ export const harvestBlock = async (
         section === 'system' && method === 'CodeUpdated',
     );
 
-    if (runtimeUpgrade || blockNumber === 0) {
+    if (runtimeUpgrade) {
       const specName = runtimeVersion.toJSON().specName;
       const specVersion = runtimeVersion.specVersion;
+
+      // TODO: enable again
+      // see: https://github.com/polkadot-js/api/issues/4596
+      // const metadata = await api.rpc.state.getMetadata(blockHash);
 
       await storeMetadata(
         api,
@@ -326,14 +326,257 @@ export const harvestBlock = async (
       );
     }
 
-    // await Promise.all([])
-
+    await Promise.all([
+      // Store block extrinsics
+      processExtrinsics(
+        api,
+        apiAt,
+        client,
+        blockNumber,
+        blockHash,
+        block.extrinsics,
+        blockEvents,
+        timestamp,
+        loggerOptions,
+      ),
+      // Store module events
+      processEvents(
+        client,
+        blockNumber,
+        parseInt(activeEra.toString()),
+        blockEvents,
+        block.extrinsics,
+        timestamp,
+        loggerOptions,
+      ),
+      // Store block logs
+      processLogs(
+        client,
+        blockNumber,
+        block.header.digest.logs,
+        timestamp,
+        loggerOptions,
+      ),
+      // Update account info for addresses found in events (only for block listener)
+      doUpdateAccountsInfo
+        ? updateAccountsInfo(
+          api,
+          client,
+          blockNumber,
+          timestamp,
+          loggerOptions,
+          blockEvents,
+        )
+        : false,
+    ]);
   } catch (error) {
     logger.error(loggerOptions, `Error adding block #${blockNumber}: ${error}`);
-    // await logHarvestError(client, blockNumber, error, loggerOptions);
+    await logHarvestError(client, blockNumber, error, loggerOptions);
     const scope = new Sentry.Scope();
     scope.setTag('blockNumber', blockNumber);
     Sentry.captureException(error, scope);
+  }
+};
+
+// eslint-disable-next-line no-unused-vars
+export const harvestBlocksSeq = async (
+  config: ScanerConfig,
+  api: ApiPromise,
+  client: Client,
+  startBlock: number,
+  endBlock: number,
+  loggerOptions: LoggerOptions,
+): Promise<void> => {
+  const reverseOrder = true;
+  const blocks = reverseOrder
+    ? reverseRange(startBlock, endBlock, 1)
+    : range(startBlock, endBlock, 1);
+  const blockProcessingTimes = [];
+  let maxTimeMs = 0;
+  let minTimeMs = 1000000;
+  let avgTimeMs = 0;
+
+  // dont update accounts info for addresses found on block events data
+  const doUpdateAccountsInfo = false;
+
+  for (const blockNumber of blocks) {
+    const blockStartTime = Date.now();
+    await harvestBlock(
+      config,
+      api,
+      client,
+      blockNumber,
+      doUpdateAccountsInfo,
+      loggerOptions,
+    );
+    const blockEndTime = new Date().getTime();
+
+    // Cook some stats
+    const blockProcessingTimeMs = blockEndTime - blockStartTime;
+    if (blockProcessingTimeMs < minTimeMs) {
+      minTimeMs = blockProcessingTimeMs;
+    }
+    if (blockProcessingTimeMs > maxTimeMs) {
+      maxTimeMs = blockProcessingTimeMs;
+    }
+    blockProcessingTimes.push(blockProcessingTimeMs);
+    avgTimeMs =
+      blockProcessingTimes.reduce(
+        (sum, blockProcessingTime) => sum + blockProcessingTime,
+        0,
+      ) / blockProcessingTimes.length;
+    const completed = ((blocks.indexOf(blockNumber) + 1) * 100) / blocks.length;
+
+    logger.info(
+      loggerOptions,
+      `Processed block #${blockNumber} ${blocks.indexOf(blockNumber) + 1}/${
+        blocks.length
+      } [${completed.toFixed(config.statsPrecision)}%] in ${(
+        blockProcessingTimeMs / 1000
+      ).toFixed(config.statsPrecision)}s min/max/avg: ${(
+        minTimeMs / 1000
+      ).toFixed(config.statsPrecision)}/${(maxTimeMs / 1000).toFixed(
+        config.statsPrecision,
+      )}/${(avgTimeMs / 1000).toFixed(config.statsPrecision)}`,
+    );
+  }
+};
+
+export const harvestBlocks = async (
+  config: ScanerConfig,
+  api: ApiPromise,
+  client: Client,
+  startBlock: number,
+  endBlock: number,
+  loggerOptions: LoggerOptions,
+): Promise<void> => {
+  const reverseOrder = false;
+  const blocks = reverseOrder
+    ? reverseRange(startBlock, endBlock, 1)
+    : range(startBlock, endBlock, 1);
+
+  const chunks = chunker(blocks, config.chunkSize);
+  logger.info(loggerOptions, `Processing chunks of ${config.chunkSize} blocks`);
+
+  const chunkProcessingTimes = [];
+  let maxTimeMs = 0;
+  let minTimeMs = 1000000;
+  let avgTimeMs = 0;
+  let avgBlocksPerSecond = 0;
+
+  // dont update accounts info for addresses found on block events data
+  const doUpdateAccountsInfo = false;
+
+  for (const chunk of chunks) {
+    const chunkStartTime = Date.now();
+    await Promise.all(
+      chunk.map((blockNumber: number) =>
+        harvestBlock(
+          config,
+          api,
+          client,
+          blockNumber,
+          doUpdateAccountsInfo,
+          loggerOptions,
+        ),
+      ),
+    );
+    const chunkEndTime = new Date().getTime();
+
+    // Cook some stats
+    const chunkProcessingTimeMs = chunkEndTime - chunkStartTime;
+    if (chunkProcessingTimeMs < minTimeMs) {
+      minTimeMs = chunkProcessingTimeMs;
+    }
+    if (chunkProcessingTimeMs > maxTimeMs) {
+      maxTimeMs = chunkProcessingTimeMs;
+    }
+    chunkProcessingTimes.push(chunkProcessingTimeMs);
+    avgTimeMs =
+      chunkProcessingTimes.reduce(
+        (sum, chunkProcessingTime) => sum + chunkProcessingTime,
+        0,
+      ) / chunkProcessingTimes.length;
+    avgBlocksPerSecond = 1 / (avgTimeMs / 1000 / config.chunkSize);
+    const currentBlocksPerSecond =
+      1 / (chunkProcessingTimeMs / 1000 / config.chunkSize);
+    const completed = ((chunks.indexOf(chunk) + 1) * 100) / chunks.length;
+
+    logger.info(
+      loggerOptions,
+      `Processed chunk ${chunks.indexOf(chunk) + 1}/${
+        chunks.length
+      } [${completed.toFixed(config.statsPrecision)}%] ` +
+        `in ${(chunkProcessingTimeMs / 1000).toFixed(
+          config.statsPrecision,
+        )}s ` +
+        `min/max/avg: ${(minTimeMs / 1000).toFixed(config.statsPrecision)}/${(
+          maxTimeMs / 1000
+        ).toFixed(config.statsPrecision)}/${(avgTimeMs / 1000).toFixed(
+          config.statsPrecision,
+        )} ` +
+        `cur/avg bps: ${currentBlocksPerSecond.toFixed(
+          config.statsPrecision,
+        )}/${avgBlocksPerSecond.toFixed(config.statsPrecision)}`,
+    );
+  }
+};
+
+export const updateFinalizedBlock = async (
+  config: ScanerConfig,
+  api: ApiPromise,
+  client: Client,
+  blockNumber: number,
+  loggerOptions: LoggerOptions,
+): Promise<void> => {
+  const startTime = new Date().getTime();
+  try {
+    const blockHash = await api.rpc.chain.getBlockHash(blockNumber);
+    const extendedHeader = await api.derive.chain.getHeader(blockHash);
+    const { parentHash, extrinsicsRoot, stateRoot } = extendedHeader;
+    const blockAuthorIdentity = await api.derive.accounts.info(
+      extendedHeader.author,
+    );
+    const blockAuthorName = getDisplayName(blockAuthorIdentity.identity);
+    const data = [
+      extendedHeader.author.toString(),
+      blockAuthorName,
+      blockHash.toString(),
+      parentHash.toString(),
+      extrinsicsRoot.toString(),
+      stateRoot.toString(),
+      blockNumber,
+    ];
+    const sql = `UPDATE
+        block SET block_author = $1,
+        block_author_name = $2,
+        block_hash = $3,
+        parent_hash = $4,
+        extrinsics_root = $5,
+        state_root = $6
+      WHERE block_number = $7`;
+    const { rowCount } = await dbParamQuery(client, sql, data, loggerOptions);
+
+    // Update finalized blocks
+    await updateFinalized(client, blockNumber, loggerOptions);
+
+    const endTime = new Date().getTime();
+    if (rowCount > 0) {
+      logger.info(
+        loggerOptions,
+        `Updated finalized block #${blockNumber} (${shortHash(
+          blockHash.toString(),
+        )}) in ${((endTime - startTime) / 1000).toFixed(
+          config.statsPrecision,
+        )}s`,
+      );
+    }
+  } catch (error) {
+    logger.error(
+      loggerOptions,
+      `Error updating finalized block #${blockNumber}: ${error}`,
+    );
+    Sentry.captureException(error);
   }
 };
 
@@ -347,7 +590,7 @@ export const harvestEvmBlock = async (
 ): Promise<void> => {
   const startTime = new Date().getTime();
   try {
-    const block = await getEvmBlock(api, blockNumber, loggerOptions);
+    const block = await api.eth.getBlock(blockNumber);
     const data = [
       block.number,
       block.miner,

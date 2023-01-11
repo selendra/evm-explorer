@@ -23,10 +23,16 @@ export const backendConfig = {
       symbol: 'SEL'
     }
   },
-  scans: [
+  scaners: [
+    {
+      name: 'blockListener',
+      enabled: process.env.BLOCK_LISTENER_ENABLE ? true : false,
+      crawler: './built/crawlers/blockListener.js',
+      statsPrecision: parseInt(process.env.BACKEND_STATS_PRECISION, 10) || 2,
+    },
     {
       name: 'blockHarvester',
-      enabled: !process.env.BLOCK_HARVESTER_DISABLE,
+      enabled: process.env.BLOCK_HARVESTER_ENABLE ? true : false,
       crawler: './built/crawlers/blockHarvester.js',
       apiCustomTypes: process.env.API_CUSTOM_TYPES || '',
       startDelay:
@@ -37,6 +43,32 @@ export const backendConfig = {
       pollingTime:
         parseInt(process.env.BLOCK_LISTENER_POLLING_TIME_MS, 10) ||
         60 * 60 * 1000,
-    }
+    },
+    {
+      name: 'ranking',
+      enabled: process.env.RANKING_ENABLE ? true : false,
+      crawler: './built/crawlers/ranking.js',
+      startDelay:
+        parseInt(process.env.RANKING_START_DELAY_MS, 10) || 15 * 60 * 1000,
+      pollingTime:
+        parseInt(process.env.RANKING_POLLING_TIME_MS, 10) || 5 * 60 * 1000,
+      historySize: 84,
+      erasPerDay: 4,
+      tokenDecimals: 18,
+      featuredTimespan: 60 * 60 * 24 * 7 * 2 * 1000, // 2 weeks
+      statsPrecision: parseInt(process.env.BACKEND_STATS_PRECISION, 10) || 2,
+    },
+    {
+      name: 'activeAccounts',
+      enabled: process.env.ACTIVE_ACCOUNTS_ENABLE ? true : false,
+      crawler: './built/crawlers/activeAccounts.js',
+      startDelay:
+        parseInt(process.env.ACTIVE_ACCOUNTS_START_DELAY_MS, 10) || 60 * 1000,
+      chunkSize: parseInt(process.env.ACTIVE_ACCOUNTS_CHUNK_SIZE, 10) || 100,
+      pollingTime:
+        parseInt(process.env.ACTIVE_ACCOUNTS_POLLING_TIME_MS, 10) ||
+        6 * 60 * 60 * 1000, // 6 hours
+      statsPrecision: parseInt(process.env.BACKEND_STATS_PRECISION, 10) || 2,
+    },
   ],
 };  

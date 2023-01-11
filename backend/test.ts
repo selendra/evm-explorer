@@ -30,7 +30,7 @@ const loggerOptions = {
   selendrascan: selendraScan,
 };
 
-const config: any = backendConfig.scans.find(
+const config: any = backendConfig.scaners.find(
   ({ name }) => name === selendraScan,
 );
 

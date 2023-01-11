@@ -2,7 +2,11 @@ import { DeriveAccountRegistration } from '@polkadot/api-derive/types';
 import Web3 from 'web3';
 import { evmProvider, substrateProvider, isNodeSynced } from './connect';
 import { logger } from './logger';
-import { LoggerOptions, ScanerConfig } from './types'
+import { 
+  LoggerOptions, ScanerConfig, IndexedBlockEvent, 
+  IndexedBlockExtrinsic, IdentityInfo, CommisionHistoryItem,
+  ClusterInfo, 
+} from './types'
 import { getClient, dbQuery, dbParamQuery } from './db'
 
 const shortHash = (hash: string): string =>
@@ -50,6 +54,24 @@ const sanitize = function(obj: any) {
   );
 };
 
+// Return array chunks of n size
+const chunker = (a: any[], n: number): any[] =>
+  Array.from({ length: Math.ceil(a.length / n) }, (_, i) =>
+    a.slice(i * n, i * n + n),
+  );
+
+// Return a reverse ordered array filled from range
+const reverseRange = (
+  start: number,
+  stop: number,
+  step: number,
+): number[] =>
+  Array.from({ length: (stop - start) / step + 1 }, (_, i) => stop - i * step);
+
+// Return filled array from range
+const range = (start: number, stop: number, step: number): number[] =>
+  Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
+
 export { 
   evmProvider,
   logger,
@@ -64,5 +86,13 @@ export {
   wait,
   shortHash,
   is_account,
-  sanitize
+  sanitize,
+  chunker,
+  IndexedBlockEvent,
+  IndexedBlockExtrinsic,
+  IdentityInfo,
+  CommisionHistoryItem,
+  ClusterInfo,
+  reverseRange,
+  range
 };

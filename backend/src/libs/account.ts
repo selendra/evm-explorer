@@ -235,7 +235,7 @@ export const updateAccountsInfo = async (
   });
   const uniqueAddresses = _.uniq(involvedAddresses);
   await Promise.all(
-    uniqueAddresses.map((address: string) =>
+    uniqueAddresses.map((address) =>
       updateAccountInfo(
         api,
         client,
