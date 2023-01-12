@@ -702,9 +702,85 @@ export const harvestEvmBlock = async (
 
   } catch (error) {
     logger.error(loggerOptions, `Error adding block #${blockNumber}: ${error}`);
-    // await logHarvestError(client, blockNumber, error, loggerOptions);
+    await logHarvestError(client, blockNumber, error, loggerOptions);
     const scope = new Sentry.Scope();
     scope.setTag('blockNumber', blockNumber);
     Sentry.captureException(error, scope);
   }
 }
+
+export const harvestEvmBlocks = async (
+  config: ScanerConfig,
+  api: Web3,
+  client: Client,
+  startBlock: number,
+  endBlock: number,
+  loggerOptions: LoggerOptions,
+): Promise<void> => {
+  const reverseOrder = false;
+  const blocks = reverseOrder
+    ? reverseRange(startBlock, endBlock, 1)
+    : range(startBlock, endBlock, 1);
+
+  const chunks = chunker(blocks, config.chunkSize);
+  logger.info(loggerOptions, `Processing chunks of ${config.chunkSize} blocks`);
+
+  const chunkProcessingTimes = [];
+  let maxTimeMs = 0;
+  let minTimeMs = 1000000;
+  let avgTimeMs = 0;
+  let avgBlocksPerSecond = 0;
+
+  for (const chunk of chunks) {
+    const chunkStartTime = Date.now();
+    await Promise.all(
+      chunk.map((blockNumber: number) =>
+        harvestEvmBlock(
+          config,
+          api,
+          client,
+          blockNumber,
+          loggerOptions,
+        ),
+      ),
+    );
+    const chunkEndTime = new Date().getTime();
+
+    // Cook some stats
+    const chunkProcessingTimeMs = chunkEndTime - chunkStartTime;
+    if (chunkProcessingTimeMs < minTimeMs) {
+      minTimeMs = chunkProcessingTimeMs;
+    }
+    if (chunkProcessingTimeMs > maxTimeMs) {
+      maxTimeMs = chunkProcessingTimeMs;
+    }
+    chunkProcessingTimes.push(chunkProcessingTimeMs);
+    avgTimeMs =
+      chunkProcessingTimes.reduce(
+        (sum, chunkProcessingTime) => sum + chunkProcessingTime,
+        0,
+      ) / chunkProcessingTimes.length;
+    avgBlocksPerSecond = 1 / (avgTimeMs / 1000 / config.chunkSize);
+    const currentBlocksPerSecond =
+      1 / (chunkProcessingTimeMs / 1000 / config.chunkSize);
+    const completed = ((chunks.indexOf(chunk) + 1) * 100) / chunks.length;
+
+    logger.info(
+      loggerOptions,
+      `Processed chunk ${chunks.indexOf(chunk) + 1}/${
+        chunks.length
+      } [${completed.toFixed(config.statsPrecision)}%] ` +
+        `in ${(chunkProcessingTimeMs / 1000).toFixed(
+          config.statsPrecision,
+        )}s ` +
+        `min/max/avg: ${(minTimeMs / 1000).toFixed(config.statsPrecision)}/${(
+          maxTimeMs / 1000
+        ).toFixed(config.statsPrecision)}/${(avgTimeMs / 1000).toFixed(
+          config.statsPrecision,
+        )} ` +
+        `cur/avg bps: ${currentBlocksPerSecond.toFixed(
+          config.statsPrecision,
+        )}/${avgBlocksPerSecond.toFixed(config.statsPrecision)}`,
+    );
+  }
+};

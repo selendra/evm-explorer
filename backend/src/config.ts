@@ -20,7 +20,7 @@ export const backendConfig = {
     substrate: {
       name: process.env.SUBSTRATE_NAME || 'selendra',
       rpc: process.env.SUBSTRATE_PROVIDER || 'ws://localhost:9944',
-      symbol: process.env.SUBSTRATE_SYMBOL || 'SEL'
+      symbol: process.env.SUBSTRATE_SYMBOL || 'SEL',
     }
   },
   scaners: [
@@ -43,6 +43,25 @@ export const backendConfig = {
       pollingTime:
         parseInt(process.env.BLOCK_LISTENER_POLLING_TIME_MS, 10) ||
         60 * 60 * 1000,
+    },
+    {
+      name: 'evmBlockHarvester',
+      enabled: process.env.EVM_BLOCK_HARVESTER_ENABLE ? true : false,
+      scaner: './build/scaners/evmBlockHarvester.js',
+      startDelay:
+        parseInt(process.env.BLOCK_HARVESTER_START_DELAY_MS, 10) || 10 * 1000,
+      mode: process.env.BLOCK_HARVESTER_MODE || 'chunks',
+      chunkSize: parseInt(process.env.BLOCK_HARVESTER_CHUNK_SIZE, 10) || 10,
+      statsPrecision: parseInt(process.env.BACKEND_STATS_PRECISION, 10) || 2,
+      pollingTime:
+        parseInt(process.env.BLOCK_LISTENER_POLLING_TIME_MS, 10) ||
+        60 * 60 * 1000,
+    },
+    {
+      name: 'evmBlockListener',
+      enabled: process.env.EVM_BLOCK_LISTENER_ENABLE ? true : false,
+      scaner: './build/scaners/evmBlockListener.js',
+      statsPrecision: parseInt(process.env.BACKEND_STATS_PRECISION, 10) || 2,
     },
     {
       name: 'ranking',
