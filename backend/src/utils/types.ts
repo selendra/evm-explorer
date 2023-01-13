@@ -1,6 +1,13 @@
 import { AnyTuple } from '@polkadot/types/types';
 import { EventRecord } from '@polkadot/types/interfaces';
 import { GenericExtrinsic } from '@polkadot/types';
+import {
+  Fragment,
+  JsonFragment,
+  FunctionFragment,
+  EventFragment,
+  ConstructorFragment,
+} from '@ethersproject/abi';
 
 export interface LoggerOptions {
   scaner: string;
@@ -39,6 +46,14 @@ export interface ClusterInfo {
   clusterMembers: number;
 }
 
+export type ABIFragment =
+  | Fragment
+  | JsonFragment
+  | FunctionFragment
+  | EventFragment
+  | ConstructorFragment;
+
+export type ABI = ReadonlyArray<ABIFragment>;
 
 export type IndexedBlockEvent = [number, EventRecord];
 export type IndexedBlockExtrinsic = [number, GenericExtrinsic<AnyTuple>];

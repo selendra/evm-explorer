@@ -316,6 +316,13 @@ CREATE TABLE IF NOT EXISTS evm_account  (
   PRIMARY KEY ( account_id )  
 );
 
+CREATE TABLE IF NOT EXISTS smart_contract  (  
+  contract_address TEXT NOT NULL,
+  block_number BIGINT NOT NULL,
+  timestamp BIGINT NOT NULL,
+  PRIMARY KEY ( account_id )  
+);
+
 CREATE TABLE IF NOT EXISTS evm_transaction  (  
   transactio_hash TEXT NOT NULL,
   transactio_index INT NOT NULL,

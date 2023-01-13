@@ -8,6 +8,7 @@ import {
   ClusterInfo, 
 } from './types'
 import { getClient, dbQuery, dbParamQuery } from './db'
+import { isErc20, isErc721 } from "./contract";
 
 const shortHash = (hash: string): string =>
   `${hash.substring(0, 6)}…${hash.substring(hash.length - 4, hash.length)
@@ -99,5 +100,7 @@ export {
   CommisionHistoryItem,
   ClusterInfo,
   reverseRange,
-  range
+  range,
+  isErc20,
+  isErc721
 };

@@ -11,7 +11,8 @@ import { processLogs } from './log';
 import { processEvents } from './event';
 import { processExtrinsics } from './extrinsic';
 import { updateAccountsInfo, processEvmAccountInfo } from './account';
-import { processTransaction } from './transaction'
+import { processTransaction } from './transaction';
+import { proccessContract } from './token'
 
 Sentry.init({
   dsn: backendConfig.sentryDSN,
@@ -651,7 +652,7 @@ export const harvestEvmBlock = async (
     ;`;
 
     try {
-      await dbParamQuery(client, sql, data, loggerOptions);
+      // await dbParamQuery(client, sql, data, loggerOptions);
       const endTime = new Date().getTime();
       logger.info(
         loggerOptions,
@@ -675,6 +676,7 @@ export const harvestEvmBlock = async (
         let txn = await api.eth.getTransaction(block.transactions[i]);
 
         await processTransaction(api, client, txn.hash, txn.value, block.timestamp, loggerOptions);
+        await proccessContract(api, "0xa41db8ec46650efa3ec2ea3b9e1906339110e519")
 
         if(txn.from) {
           processEvmAccountInfo(
