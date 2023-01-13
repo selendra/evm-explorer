@@ -1,5 +1,28 @@
 import { ethers } from 'ethers';
 import SELECTORS from './abis/selectors.json';
+// import { ABI, dropKey } from './index';
+// import Erc20Abi from './abis/Erc20Abi';
+// import Erc721Abi from './abis/Erc721Abi';
+// import Erc1155Abi from './abis/Erc1155Abi';
+
+// const contractChecked = (abi: ABI, format: string[]): boolean => {
+//   const fragments = abi
+//     .map((fragment) => ({
+//       ...fragment,
+//       inputs: fragment.inputs?.map((i) => dropKey(i, 'name')),
+//     }))
+//     .map((fragment) => JSON.stringify(fragment));
+  
+//   return format
+//     .reduce(
+//       (prev, currentFragment) => prev && fragments.includes(currentFragment),
+//       true,
+//     );
+// };
+
+// export const checkIfContractIsERC20 = (abi: ABI): boolean => contractChecked(abi, Erc20Abi);
+// export const checkIfContractIsERC721 = (abi: ABI): boolean => contractChecked(abi, Erc721Abi);
+// export const checkIfContractIsERC1155 = (abi: ABI): boolean => contractChecked(abi, Erc1155Abi);
 
 const findSelectors = (abi: any, pattern: any) => {
     try {

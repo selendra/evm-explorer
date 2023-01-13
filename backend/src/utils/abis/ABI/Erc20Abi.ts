@@ -1,4 +1,4 @@
-import { ABI, dropKey } from '../index';
+import { ABI, dropKey } from '../../index';
 
 export default ([
     {

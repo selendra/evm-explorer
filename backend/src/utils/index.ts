@@ -2,11 +2,7 @@ import { DeriveAccountRegistration } from '@polkadot/api-derive/types';
 import Web3 from 'web3';
 import { evmProvider, substrateProvider, isNodeSynced } from './connect';
 import { logger } from './logger';
-import { 
-  LoggerOptions, ScanerConfig, IndexedBlockEvent, 
-  IndexedBlockExtrinsic, IdentityInfo, CommisionHistoryItem,
-  ClusterInfo, 
-} from './types'
+import { LoggerOptions, ScanerConfig, IndexedBlockEvent, IndexedBlockExtrinsic, IdentityInfo, CommisionHistoryItem, ClusterInfo, ABI } from './types'
 import { getClient, dbQuery, dbParamQuery } from './db'
 import { isErc20, isErc721 } from "./contract";
 
@@ -78,6 +74,15 @@ export const getRandom = (arr: any[], n: number): any[] => {
   return shuffled.slice(0, n);
 };
 
+export const dropKey = <T, Key extends keyof T>(
+  obj: T,
+  key: Key,
+): Omit<T, Key> => {
+  const newObj = { ...obj };
+  delete newObj[key];
+  return newObj;
+};
+
 export { 
   evmProvider,
   logger,
@@ -102,5 +107,6 @@ export {
   reverseRange,
   range,
   isErc20,
-  isErc721
+  isErc721,
+  ABI,
 };

@@ -1,3 +1,10 @@
+CREATE TYPE public.contracttype AS ENUM (
+    'ERC20',
+    'ERC721',
+    'ERC1155',
+    'other'
+);
+
 CREATE TABLE IF NOT EXISTS evm_block (  
   block_number BIGINT NOT NULL,
   block_author TEXT NOT NULL,
@@ -19,9 +26,16 @@ CREATE TABLE IF NOT EXISTS evm_account  (
   account_id TEXT NOT NULL,
   balances NUMERIC(40,0) NOT NULL,
   block_height BIGINT NOT NULL,
-  is_account BOOLEAN NOT NULL,
   timestamp BIGINT NOT NULL,
   PRIMARY KEY ( account_id )  
+);
+
+CREATE TABLE IF NOT EXISTS smart_contract  (  
+  address TEXT NOT NULL,
+  bytecode NUMERIC(40,0) NOT NULL,
+  type public.contracttype DEFAULT 'other'::public.contracttype,
+  timestamp BIGINT NOT NULL,
+  PRIMARY KEY ( address )  
 );
 
 CREATE TABLE IF NOT EXISTS evm_transaction  (  

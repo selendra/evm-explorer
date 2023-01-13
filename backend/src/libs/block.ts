@@ -12,7 +12,7 @@ import { processEvents } from './event';
 import { processExtrinsics } from './extrinsic';
 import { updateAccountsInfo, processEvmAccountInfo } from './account';
 import { processTransaction } from './transaction';
-import { proccessContract } from './token'
+import { proccessContract } from './contract'
 
 Sentry.init({
   dsn: backendConfig.sentryDSN,
