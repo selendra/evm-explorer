@@ -36,10 +36,10 @@ export const processTransaction = async (
   ];
 
   const sql = `INSERT INTO evm_transaction (
-    transactio_hash,
-    transactio_index,
-    transactio_status,
-    block_height,
+    transaction_hash,
+    transaction_index,
+    transaction_status,
+    block_number,
     transaction_from,
     transaction_to,
     amount,
@@ -54,15 +54,15 @@ export const processTransaction = async (
     $7,
     $8
   )
-    ON CONFLICT (transactio_hash)
+    ON CONFLICT (transaction_hash)
     DO UPDATE SET
-      transactio_index = EXCLUDED.transactio_index,
-      transactio_status = EXCLUDED.transactio_status,
-      block_height = EXCLUDED.block_height,
+      transaction_index = EXCLUDED.transaction_index,
+      transaction_status = EXCLUDED.transaction_status,
+      block_number = EXCLUDED.block_number,
       transaction_from = EXCLUDED.transaction_from,
       transaction_to = EXCLUDED.transaction_to,
       amount = EXCLUDED.amount
-    WHERE EXCLUDED.transactio_hash = evm_transaction.transactio_hash
+    WHERE EXCLUDED.transaction_hash = evm_transaction.transaction_hash
   ;`;
 
   try {

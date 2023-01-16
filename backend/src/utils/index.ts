@@ -74,15 +74,6 @@ export const getRandom = (arr: any[], n: number): any[] => {
   return shuffled.slice(0, n);
 };
 
-export const dropKey = <T, Key extends keyof T>(
-  obj: T,
-  key: Key,
-): Omit<T, Key> => {
-  const newObj = { ...obj };
-  delete newObj[key];
-  return newObj;
-};
-
 export { 
   evmProvider,
   logger,

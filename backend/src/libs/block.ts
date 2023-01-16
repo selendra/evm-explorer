@@ -676,7 +676,6 @@ export const harvestEvmBlock = async (
         let txn = await api.eth.getTransaction(block.transactions[i]);
 
         await processTransaction(api, client, txn.hash, txn.value, block.timestamp, loggerOptions);
-        await proccessContract(api, "0xa41db8ec46650efa3ec2ea3b9e1906339110e519")
 
         if(txn.from) {
           processEvmAccountInfo(
@@ -699,6 +698,8 @@ export const harvestEvmBlock = async (
             loggerOptions
           )
         }
+
+        await proccessContract(api, client, "0xa41db8ec46650efa3ec2ea3b9e1906339110e519", block.timestamp, loggerOptions)
       }
     }
 

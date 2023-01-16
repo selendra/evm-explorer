@@ -310,9 +310,9 @@ INSERT INTO total (name, count) VALUES
   ('active_era', 0),
   ('evm_transactions', 0),
   ('evm_blocks', 0),
-  ('smart_contract', 0),
-  ('ERC20', 0),
-  ('ERC721', 0),
+  ('smart_contracts', 0),
+  ('ERC20s', 0),
+  ('ERC721s', 0),
   ('minimum_stake', 0);
 
 CREATE INDEX IF NOT EXISTS block_finalized_idx ON block (finalized);
