@@ -29,7 +29,7 @@ export const proccessContract = async (
 
   let data = [
     address,
-    "byteCode",
+    byteCode,
     contractType,
     timestamp,
   ];
