@@ -4,7 +4,7 @@ import { logger, ScanerConfig, wait, substrateProvider, evmProvider, isNodeSynce
 import { harvestEvmBlock } from '../libs/block';
 import { backendConfig } from '../config';
 
-const scanerName = 'blockListener';
+const scanerName = 'evmBlockListener';
 
 Sentry.init({
   dsn: backendConfig.sentryDSN,

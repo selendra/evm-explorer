@@ -8,7 +8,7 @@ services:
       - '8080:8080'
     restart: always
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DATABASE}
+      HASURA_GRAPHQL_DATABASE_URL: postgres://selendra-scan:OIF45IHFDIW12INKsefjoiJIHIJIqwsPodf@118.67.207.84:5433:5432/selendraTest
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
       HASURA_GRAPHQL_ENABLE_CONSOLE: 'true' # set to 'false' to disable console
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: 'startup, http-log, webhook-log, websocket-log, query-log'

@@ -652,7 +652,7 @@ export const harvestEvmBlock = async (
     ;`;
 
     try {
-      // await dbParamQuery(client, sql, data, loggerOptions);
+      await dbParamQuery(client, sql, data, loggerOptions);
       const endTime = new Date().getTime();
       logger.info(
         loggerOptions,
