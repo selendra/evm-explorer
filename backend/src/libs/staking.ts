@@ -22,23 +22,6 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-export const getThousandValidators = async (
-  loggerOptions: LoggerOptions,
-): Promise<any[]> => {
-  try {
-    const response = await axios.get('https://selendra.org/candidates');
-    return response.data;
-  } catch (error) {
-    logger.error(
-      loggerOptions,
-      `Error fetching Thousand Validator Program stats: ${JSON.stringify(
-        error,
-      )}`,
-    );
-    return [];
-  }
-};
-
 export const isVerifiedIdentity = (
   identity: DeriveAccountRegistration,
 ): boolean => {
@@ -295,8 +278,6 @@ export const insertRankingValidator = async (
       stash_parent_address_creation_block,
       address_creation_rating,
       controller_address,
-      included_thousand_validators,
-      thousand_validator,
       part_of_cluster,
       cluster_name,
       cluster_members,
@@ -400,8 +381,6 @@ export const insertRankingValidator = async (
     validator.stashParentCreatedAtBlock,
     validator.addressCreationRating,
     validator.controllerAddress,
-    validator.includedThousandValidators,
-    JSON.stringify(validator.thousandValidator),
     validator.partOfCluster,
     validator.clusterName,
     validator.clusterMembers,

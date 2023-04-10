@@ -3,7 +3,6 @@ import * as Sentry from '@sentry/node';
 import { getClient, dbQuery, substrateProvider, isNodeSynced, wait, getRandom, ScanerConfig, logger } from '../utils';
 import {
   getLastEraInDb,
-  getThousandValidators,
   getAddressCreation,
   parseIdentity,
   getClusterInfo,
@@ -34,13 +33,13 @@ const config: ScanerConfig = backendConfig.scaners.find(
 );
 
 const scaner = async (delayedStart: boolean) => {
-  if (delayedStart) {
-    logger.info(
-      loggerOptions,
-      `Delaying ranking scaner start for ${config.startDelay / 1000}s`,
-    );
-    await wait(config.startDelay);
-  }
+  // if (delayedStart) {
+  //   logger.info(
+  //     loggerOptions,
+  //     `Delaying ranking scaner start for ${config.startDelay / 1000}s`,
+  //   );
+  //   await wait(config.startDelay);
+  // }
 
   logger.info(loggerOptions, 'Starting ranking scaner');
   const startTime = new Date().getTime();
@@ -76,17 +75,6 @@ const scaner = async (delayedStart: boolean) => {
   try {
     const lastEraInDb = await getLastEraInDb(client, loggerOptions);
     logger.debug(loggerOptions, `Last era in DB is ${lastEraInDb}`);
-
-    // thousand validators program data
-    logger.debug(
-      loggerOptions,
-      'Fetching thousand validator program validators ...',
-    );
-    const thousandValidators = await getThousandValidators(loggerOptions);
-    logger.debug(
-      loggerOptions,
-      `Got info of ${thousandValidators.length} validators from Thousand Validators program API`,
-    );
 
     // chain data
     logger.debug(loggerOptions, 'Fetching chain data ...');
@@ -342,16 +330,6 @@ const scaner = async (delayedStart: boolean) => {
           addressCreationRating = 1;
         }
 
-        // thousand validators program
-        const includedThousandValidators = thousandValidators.some(
-          ({ stash }: { stash: any }) => stash === stashAddress,
-        );
-        const thousandValidator = includedThousandValidators
-          ? thousandValidators.find(
-            ({ stash }: { stash: any }) => stash === stashAddress,
-          )
-          : '';
-
         // controller
         const controllerAddress = validator.controllerId.toString();
 
@@ -578,8 +556,6 @@ const scaner = async (delayedStart: boolean) => {
           stashParentCreatedAtBlock,
           addressCreationRating,
           controllerAddress,
-          includedThousandValidators,
-          thousandValidator,
           partOfCluster,
           clusterName,
           clusterMembers,
