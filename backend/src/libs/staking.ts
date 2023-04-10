@@ -359,9 +359,7 @@ export const insertRankingValidator = async (
       $45,
       $46,
       $47,
-      $48,
-      $49,
-      $50
+      $48
     )
     ON CONFLICT ON CONSTRAINT ranking_pkey 
     DO NOTHING`;

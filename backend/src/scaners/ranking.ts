@@ -33,13 +33,13 @@ const config: ScanerConfig = backendConfig.scaners.find(
 );
 
 const scaner = async (delayedStart: boolean) => {
-  // if (delayedStart) {
-  //   logger.info(
-  //     loggerOptions,
-  //     `Delaying ranking scaner start for ${config.startDelay / 1000}s`,
-  //   );
-  //   await wait(config.startDelay);
-  // }
+  if (delayedStart) {
+     logger.info(
+       loggerOptions,
+       `Delaying ranking scaner start for ${config.startDelay / 1000}s`,
+     );
+     await wait(config.startDelay);
+   }
 
   logger.info(loggerOptions, 'Starting ranking scaner');
   const startTime = new Date().getTime();
@@ -204,7 +204,7 @@ const scaner = async (delayedStart: boolean) => {
       }
     }
     nominatorStakes.sort((a, b) => (a.unwrap().lt(b.unwrap()) ? -1 : 1));
-    const minimumStake = nominatorStakes[0];
+    const minimumStake = nominatorStakes[0] ? nominatorStakes[0] : 0;
 
     logger.debug(loggerOptions, `${activeValidatorCount} active validators`);
     logger.debug(loggerOptions, `${waitingValidatorCount} waiting validators`);
