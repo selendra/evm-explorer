@@ -24,13 +24,15 @@ export const processTransaction = async (
     return data
   })
 
+  let transaction_to = receipt.to ? receipt.to : "";
+
   let data = [
     receipt.transactionHash,
     receipt.transactionIndex,
     receipt.status,
     receipt.blockNumber,
     receipt.from,
-    receipt.to,
+    transaction_to,
     amount,
     timestamp,
   ];
